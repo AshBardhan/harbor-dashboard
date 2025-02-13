@@ -41,7 +41,7 @@
         {
           name: "into-ordinary",
           id: "b9e1a987-d4a3-47a4-a019-19844d02f84e",
-          status: "RUNNING",
+          status: "FAILED",
           endpoint: "3.110.193.51",
           created_at: "2022-10-27T09:37:59.060386+00:00",
           updated_at: "2022-10-27T09:40:20.534066+00:00",
@@ -471,19 +471,19 @@
         {
           name: "suit-outer",
           id: "62fe05ce-792b-4620-a55f-bd97953b34b8",
-          status: "RUNNING",
+          status: "UPDATING",
           endpoint: "13.233.134.120",
           created_at: "2022-10-27T09:02:31.972367+00:00",
           updated_at: "2022-10-27T09:04:52.454428+00:00",
           testnet_off_chain_actors: [
             {
               name: "routerCache",
-              status: "RUNNING",
+              status: "UPDATING",
               __typename: "testnet_off_chain_actor",
             },
             {
               name: "ipfs",
-              status: "RUNNING",
+              status: "UPDATING",
               __typename: "testnet_off_chain_actor",
             },
             {
@@ -495,7 +495,7 @@
           testnet_chains: [
             {
               chain: "ethereum",
-              status: "RUNNING",
+              status: "UPDATING",
               __typename: "testnet_chain",
             },
           ],
