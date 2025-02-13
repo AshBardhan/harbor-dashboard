@@ -13,7 +13,7 @@ export default function Content() {
 	  const [error, setError] = useState(null);
 
 	  const [sortedValue, setSortedValue] = useState(SortType.ASC);
-	  const [filteredValue, setFilteredValue] = useState('');
+	  const [filteredValue, setFilteredValue] = useState(Status.ALL);
 	  const [filterOptions, setFilterOptions] = useState([]);
 
 	  useEffect(() => {
@@ -52,24 +52,24 @@ export default function Content() {
 	  }, []);
 	  
 	useEffect(() => {
-		let filtered = (filteredValue === Status.ALL) ? items : items.filter((item) => item.status === filteredValue);
-		filtered = filtered.sort((a, b) => {
+		let filtered = (filteredValue === Status.ALL) ? [...items] : [...items].filter((item) => item.status === filteredValue);
+		filtered.sort((a, b) => {
 			switch (sortedValue) {
 				case SortType.DESC:
-					return b.name - a.name ? 1 : ((a.name > b.name) ? -1 : 0);
+					return b.name.localeCompare(a.name);
 				case SortType.STATUS:
-					return a.status - b.status ? 1 : ((b.status > a.status) ? -1 : 0);
+					return a.status.localeCompare(b.status);
 				case SortType.CREATED_AT:
 					return (+new Date(a.created_at) - +new Date(b.created_at));
 				case SortType.UPDATED_AT:
 					return (+new Date(a.updated_at) - +new Date(b.updated_at));
 				default:
 				case SortType.ASC:
-					return a.name - b.name ? 1 : ((b.name > a.name) ? -1 : 0);
+					return a.name.localeCompare(b.name);
 			}
-		  })
+		  });
 		  setFilteredItems(filtered);
-	}, [sortedValue, filteredValue]);
+	}, [sortedValue, filteredValue, items]);
 	
 	  if (loading) {
 		return <div>Loading...</div>;
