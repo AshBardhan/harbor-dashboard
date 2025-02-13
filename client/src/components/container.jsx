@@ -3,13 +3,13 @@ import Sidebar from "./sidebar";
 
 export default function Container({children}) {
 	return (
-		<div style={{display: 'flex',}}>
-			<div  style={{ flexShrink: 0}}>
+		<div className="page-container">
+			<aside className="page-sidebar">
 				<Sidebar>this is sidebar</Sidebar>
-			</div>
-			<div  style={{ flexGrow: 1}}>
+			</aside>
+			<main className="page-content">
 				<Content></Content>
-			</div>
+			</main>
 		</div>
 	);
 }

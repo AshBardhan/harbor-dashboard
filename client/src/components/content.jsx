@@ -85,7 +85,7 @@ export default function Content() {
 	};
 
 	return (
-		<section>
+		<>
 			<div style={{display: 'flex', justifyContent: 'space-between'}}>
 				<Text type="h1">Testnets ({filteredItems.length || 0})</Text>
 				<div style={{display: 'flex', gap: '10px'}}>
@@ -108,6 +108,6 @@ export default function Content() {
 					<Card key={item.id} data={item}></Card>
 				))}
 			</div>
-		</section>
+		</>
 	);
 }

@@ -1,4 +1,4 @@
 
 export default function Sidebar({children}) {
-	return <aside>This is sidebar</aside>;
+	return <>This is sidebar</>;
 }
