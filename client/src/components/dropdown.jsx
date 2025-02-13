@@ -17,6 +17,11 @@ export default function Dropdown({options, onChange}) {
         setIsOpen(false);
     };
 
+    const getDropdownIcon = (option) => {
+        const IconComponent = option?.icon || null;
+        return IconComponent ? <IconComponent width="14" height="14" fill="currentColor" /> : null;
+    };
+
     useEffect(() => {
         const pageClickEvent = (e) => {
           if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -33,7 +38,7 @@ export default function Dropdown({options, onChange}) {
         <div className="dropdown" ref={dropdownRef}>
             <div className="dropdown-button" onClick={onDropdownButtonClick}>
                 <Flexbox alignItems="center" justifyContent="center" gap="5px" style={{color: selected.color || '' }}>
-                    {selected.icon && (<span className="icon"></span>)}
+                    {selected.icon && getDropdownIcon(selected)}
                     {selected.label}
                 </Flexbox>
             </div>
@@ -41,7 +46,7 @@ export default function Dropdown({options, onChange}) {
                 {options.map(option => (
                     <div className={`dropdown-menu-option ${option.value === selected.value && 'selected'}`} key={option.value} onClick={() => onDropdownOptionClick(option)}>
                         <Flexbox alignItems="center" justifyContent="center" gap="5px" style={{color: option.color || '' }}>
-                            {option.icon && (<span className="icon"></span>)}
+                            {option.icon && getDropdownIcon(option)}
                             {option.label}
                         </Flexbox>
                     </div>

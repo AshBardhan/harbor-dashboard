@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./card";
 import Dropdown from "./dropdown";
 import Text from "./text";
-import { Status, StatusColorMapping, StatusLabelMapping } from "../constants/status";
+import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from "../constants/status";
 import { SortOptions, SortType } from "../constants/sort";
 
 export default function Content() {
@@ -14,6 +14,11 @@ export default function Content() {
 	  const [sortedValue, setSortedValue] = useState(SortType.ASC);
 	  const [filteredValue, setFilteredValue] = useState('');
 	  const [filterOptions, setFilterOptions] = useState([]);
+
+	   const StatusIcon = ({ status, size = 20 }) => {
+			const IconComponent = statusIconMap[status] || null;
+		  return IconComponent ? <IconComponent width="14" height="14" /> : null;
+		};
 	
 	  useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/testnets`)
@@ -33,11 +38,13 @@ export default function Content() {
 					label: `${StatusLabelMapping[Status.ALL]} (${testList.length})`,
 					value: Status.ALL,
 					color: StatusColorMapping[Status.ALL],
+					icon: statusIconMap[Status.ALL],
 				},
 				...statusCount.map(([status, count]) => ({
 					label: `${StatusLabelMapping[status]} (${count})`,
 					value: status,
 					color: StatusColorMapping[status],
+					icon: statusIconMap[status],
 				}))
 			]);
 			setLoading(false);
