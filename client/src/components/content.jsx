@@ -4,6 +4,7 @@ import Dropdown from "./dropdown";
 import Text from "./text";
 import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from "../constants/status";
 import { SortOptions, SortType } from "../constants/sort";
+import Flexbox from "./flexbox";
 
 export default function Content() {
 	  const [items, setItems] = useState([]);
@@ -15,11 +16,6 @@ export default function Content() {
 	  const [filteredValue, setFilteredValue] = useState('');
 	  const [filterOptions, setFilterOptions] = useState([]);
 
-	   const StatusIcon = ({ status, size = 20 }) => {
-			const IconComponent = statusIconMap[status] || null;
-		  return IconComponent ? <IconComponent width="14" height="14" /> : null;
-		};
-	
 	  useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/testnets`)
 		  .then((response) => response.json())
@@ -93,28 +89,27 @@ export default function Content() {
 
 	return (
 		<>
-			<div style={{display: 'flex', justifyContent: 'space-between'}}>
-				<Text type="h1">Testnets ({filteredItems.length || 0})</Text>
-				<div style={{display: 'flex', gap: '10px'}}>
-					{
-						filterOptions.length > 0 && (
-							<div>
-								<Text type="span">Filter by</Text>
+			<Flexbox alignItems="center" justifyContent="space-between" style={{marginBottom: '20px'}}>
+				<Text type="h2">Testnets ({filteredItems.length || 0})</Text>
+				<Flexbox  alignItems="center" gap="10px">
+					{filterOptions.length > 0 && (
+						<>
+							<Flexbox alignItems="center" gap="10px">
+								<Text type="span">Filter by:</Text>
 								<Dropdown options={filterOptions} onChange={onFilterChange}></Dropdown>
-							</div>
-						)
-					}
-					<div>
-						<Text type="span">Sort by</Text>
+							</Flexbox>
+							<span className="dot"></span>
+						</>
+					)}
+					<Flexbox alignItems="center" gap="10px">
+						<Text type="span">Sort by:</Text>
 						<Dropdown options={SortOptions} onChange={onSortChange}></Dropdown>
-					</div>
-				</div>
-			</div>
-			<div style={{listStyle: 'none'}}>
-				{filteredItems.map((item) => (
-					<Card key={item.id} data={item}></Card>
-				))}
-			</div>
+					</Flexbox>
+				</Flexbox>
+			</Flexbox>
+			{filteredItems.map((item) => (
+				<Card key={item.id} data={item}></Card>
+			))}
 		</>
 	);
 }

@@ -71,7 +71,7 @@ h1,h2,h3,h4,h5.h6 {
   background-color: #FDF7F8;
 }
 
-.badge {
+.tag {
   display: inline-flex;
   border-radius: 10px;
   color: #999;
@@ -165,4 +165,23 @@ h1,h2,h3,h4,h5.h6 {
   color: #999999;
   font-size: 12px;
   font-weight: 500;
+}
+
+.badges {
+  display: flex;
+}
+
+.badge {
+  background-color: #fff;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -6px;
+
+  &:first-child {
+    margin-left: 0;
+  }
 }

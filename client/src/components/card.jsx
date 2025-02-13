@@ -4,11 +4,14 @@ import Flexbox from './flexbox';
 import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from '../constants/status';
 import { ReactComponent as ClockIcon } from '../assets/icons/clock.svg';
 import { ReactComponent as SettingsIcon } from '../assets/icons/settings.svg';
+import BadgeList from './badge-list';
+import { BlockchainIconMap } from '../constants/blockchain';
 
 export default function Card({data}) {
     const { testnet_off_chain_actors: testnetOffChainActors, testnet_chains: testnetChains, name, status } = data;
     const isBlockchainUpdating = testnetChains.find((chain) => chain.status === Status.UPDATING);
     const offChainUpdatingCount = testnetOffChainActors.filter((chain) => chain.status === Status.UPDATING).length;
+    const blockchainIcons = testnetChains.map((blockchain) => BlockchainIconMap[blockchain.chain]);
 
     const StatusIcon = ({status}) => {
         const IconComponent = statusIconMap[status] || null;
@@ -20,7 +23,7 @@ export default function Card({data}) {
             <Flexbox justifyContent="space-between">
                 <Flexbox gap="10px" alignItems="center">
                     <Text type="h3">{name}</Text>
-                    <span className="badge">5321</span>
+                    <span className="tag">5321</span>
                 </Flexbox>
                 
                 <Flexbox gap="10px" alignItems="center">
@@ -42,6 +45,7 @@ export default function Card({data}) {
                     {testnetChains.length > 0 && <>
                         <span className="dot"></span>
                         <Text type="span">{testnetChains.length} blockchain(s)</Text>
+                        <BadgeList list={blockchainIcons}></BadgeList>
                     </>}
                 </Flexbox>
                 <Flexbox gap="5px" alignItems="center" className="timestamp">

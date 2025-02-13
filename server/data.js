@@ -270,6 +270,16 @@
               status: "RUNNING",
               __typename: "testnet_chain",
             },
+            {
+              chain: "alchemy",
+              status: "RUNNING",
+              __typename: "testnet_chain",
+            },
+            {
+              chain: "polygon",
+              status: "RUNNING",
+              __typename: "testnet_chain",
+            },
           ],
           testnet_image: {
             project_id: "763db951-01d2-455e-8c45-08b839f2248b",
