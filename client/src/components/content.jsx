@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Card from "./card";
 import Dropdown from "./dropdown";
+import Text from "./text";
+import { Status, StatusLabelMapping } from "../constants/status";
+import { SortOptions, SortType } from "../constants/sort";
 
 export default function Content() {
 	  const [items, setItems] = useState([]);
@@ -8,18 +11,10 @@ export default function Content() {
 	  const [loading, setLoading] = useState(true);
 	  const [error, setError] = useState(null);
 
-	  const [sortedValue, setSortedValue] = useState('asc');
+	  const [sortedValue, setSortedValue] = useState(SortType.ASC);
 	  const [filteredValue, setFilteredValue] = useState('');
 	  const [filterOptions, setFilterOptions] = useState([]);
 	
-	  const SortOptions = [
-		{label: 'Name A-Z', value: 'asc'},
-		{label: 'Name Z-A', value: 'desc'},
-		{label: 'Status', value: 'status'},
-		{label: 'Date Created', value: 'created_at'},
-		{label: 'Last Modified', value: 'updated_at'},
-	  ];
-
 	  useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/testnets`)
 		  .then((response) => response.json())
@@ -35,9 +30,9 @@ export default function Content() {
 			);
 	
 			setFilterOptions([
-				{label: `All (${testList.length})`, value: 'ALL'},
+				{label: `${StatusLabelMapping[Status.ALL]} (${testList.length})`, value: 'ALL'},
 				...statusCount.map(([status, count]) => ({
-					label: `${status} (${count})`,
+					label: `${StatusLabelMapping[status]} (${count})`,
 					value: status,
 				}))
 			]);
@@ -50,19 +45,20 @@ export default function Content() {
 	  }, []);
 	  
 	useEffect(() => {
-		let filtered = (filteredValue === 'ALL') ? items : items.filter((item) => item.status === filteredValue);
+		let filtered = (filteredValue === Status.ALL) ? items : items.filter((item) => item.status === filteredValue);
 		filtered = filtered.sort((a, b) => {
 			switch (sortedValue) {
-			  case 'asc':
-				return a.name - b.name ? 1 : ((b.name > a.name) ? -1 : 0);
-			  case 'desc':
-				return b.name - a.name ? 1 : ((a.name > b.name) ? -1 : 0);
-			  case 'status':
-				return a.status - b.status ? 1 : ((b.status > a.status) ? -1 : 0);
-			  case 'created_at':
-				return (+new Date(a.created_at) - +new Date(b.created_at));
-			  case 'updated_at':
-				return (+new Date(a.updated_at) - +new Date(b.updated_at));
+				case SortType.DESC:
+					return b.name - a.name ? 1 : ((a.name > b.name) ? -1 : 0);
+				case SortType.STATUS:
+					return a.status - b.status ? 1 : ((b.status > a.status) ? -1 : 0);
+				case SortType.CREATED_AT:
+					return (+new Date(a.created_at) - +new Date(b.created_at));
+				case SortType.UPDATED_AT:
+					return (+new Date(a.updated_at) - +new Date(b.updated_at));
+				default:
+				case SortType.ASC:
+					return a.name - b.name ? 1 : ((b.name > a.name) ? -1 : 0);
 			}
 		  })
 		  setFilteredItems(filtered);
@@ -87,18 +83,18 @@ export default function Content() {
 	return (
 		<section>
 			<div style={{display: 'flex', justifyContent: 'space-between'}}>
-				<h1>Testnets ({filteredItems.length || 0})</h1>
+				<Text type="h1">Testnets ({filteredItems.length || 0})</Text>
 				<div style={{display: 'flex', gap: '10px'}}>
 					{
 						filterOptions.length > 0 && (
 							<div>
-								<span>Filter by</span>
+								<Text type="span">Filter by</Text>
 								<Dropdown options={filterOptions} onChange={onFilterChange}></Dropdown>
 							</div>
 						)
 					}
 					<div>
-						<span>Sort by</span>
+						<Text type="span">Sort by</Text>
 						<Dropdown options={SortOptions} onChange={onSortChange}></Dropdown>
 					</div>
 				</div>

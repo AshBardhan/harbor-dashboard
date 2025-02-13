@@ -1,0 +1,75 @@
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5.h6 {
+  margin: 0;
+  color: black;
+}
+
+.tile {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #E5E5E5;
+  box-shadow: 0px 4px 6px 0px rgba(0,0,0,6%);
+  margin-bottom: 20px;
+  
+  &:last-child {
+      margin-bottom: 0;
+  }
+}
+
+.tile--error {
+  border-color: #CD3A4C;
+  background-color: #FDF7F8;
+}
+
+.badge {
+  display: inline-flex;
+  border-radius: 10px;
+  color: #999;
+  background-color: #f6f6f6;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #D2D5DB;
+}
+
+.icon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  background-color: #999;
+}
+
+.inline-button {
+  display: inline-flex;
+  gap: 5px;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  color: #2F80ED;
+  cursor: pointer;
+  font-family: inherit;
+  align-items: center;
+  font-weight: 600;
+
+  &[disabled] {
+    color: #aaa;
+    pointer-events: none;
+  }
+}
