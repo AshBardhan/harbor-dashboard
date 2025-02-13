@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./card";
 import Dropdown from "./dropdown";
 import Text from "./text";
-import { Status, StatusLabelMapping } from "../constants/status";
+import { Status, StatusColorMapping, StatusLabelMapping } from "../constants/status";
 import { SortOptions, SortType } from "../constants/sort";
 
 export default function Content() {
@@ -28,12 +28,16 @@ export default function Content() {
 					return acc;
 				  }, {})
 			);
-	
 			setFilterOptions([
-				{label: `${StatusLabelMapping[Status.ALL]} (${testList.length})`, value: 'ALL'},
+				{
+					label: `${StatusLabelMapping[Status.ALL]} (${testList.length})`,
+					value: Status.ALL,
+					color: StatusColorMapping[Status.ALL],
+				},
 				...statusCount.map(([status, count]) => ({
 					label: `${StatusLabelMapping[status]} (${count})`,
 					value: status,
+					color: StatusColorMapping[status],
 				}))
 			]);
 			setLoading(false);
