@@ -6,6 +6,7 @@ import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from ".
 import { SortOptions, SortType } from "../constants/sort";
 import Flexbox from "./flexbox";
 import { ReactComponent as AddIcon } from '../assets/icons/add.svg';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Content() {
 	  const [items, setItems] = useState([]);
@@ -13,9 +14,12 @@ export default function Content() {
 	  const [loading, setLoading] = useState(true);
 	  const [error, setError] = useState(null);
 
-	  const [sortedValue, setSortedValue] = useState(SortType.ASC);
-	  const [filteredValue, setFilteredValue] = useState(Status.ALL);
+	  const [sortBy, setSortBy] = useState(SortType.ASC);
+	  const [filterBy, setFilterBy] = useState(Status.ALL);
 	  const [filterOptions, setFilterOptions] = useState([]);
+
+	  const navigate = useNavigate();
+	  const location = useLocation();
 
 	  useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/testnets`)
@@ -51,11 +55,31 @@ export default function Content() {
 			setLoading(false);
 		  });
 	  }, []);
+
+	  useEffect(() => {
+		const searchParams = new URLSearchParams(location.search);	
+		const filterParam = searchParams.get('filterBy');
+		const sortParam = searchParams.get('sortBy');
+	
+		filterParam && setFilterBy(filterParam);
+		sortParam && setSortBy(sortParam);
+	  }, [location.search]);
+
+	  useEffect(() => {
+		const searchParams = new URLSearchParams();
+		searchParams.set('filterBy', filterBy);
+		searchParams.set('sortBy', sortBy);
+	
+		navigate({
+		  pathname: location.pathname,
+		  search: searchParams.toString(),
+		});
+	  }, [filterBy, sortBy, navigate, location.pathname]);
 	  
 	useEffect(() => {
-		let filtered = (filteredValue === Status.ALL) ? [...items] : [...items].filter((item) => item.status === filteredValue);
+		let filtered = (filterBy === Status.ALL) ? [...items] : [...items].filter((item) => item.status === filterBy);
 		filtered.sort((a, b) => {
-			switch (sortedValue) {
+			switch (sortBy) {
 				case SortType.DESC:
 					return b.name.localeCompare(a.name);
 				case SortType.STATUS:
@@ -70,7 +94,7 @@ export default function Content() {
 			}
 		  });
 		  setFilteredItems(filtered);
-	}, [sortedValue, filteredValue, items]);
+	}, [sortBy, filterBy, items]);
 	
 	  if (loading) {
 		return <div>Loading...</div>;
@@ -81,11 +105,11 @@ export default function Content() {
 	  }
 	
 	const onSortChange = (value) => {
-		setSortedValue(value);
+		setSortBy(value);
 	};
 
 	const onFilterChange = (value) => {
-		setFilteredValue(value);
+		setFilterBy(value);
 	};
 
 	return (
@@ -101,11 +125,11 @@ export default function Content() {
 				<Flexbox  alignItems="center" gap="10px">
 					{filterOptions.length > 0 && (
 						<>
-							<Dropdown label="Filter by:" options={filterOptions} onChange={onFilterChange}></Dropdown>
+							<Dropdown label="Filter by:" options={filterOptions} selected={filterBy} onChange={onFilterChange}></Dropdown>
 							<span className="dot"></span>
 						</>
 					)}
-					<Dropdown label="Sort by:" options={SortOptions} onChange={onSortChange}></Dropdown>
+					<Dropdown label="Sort by:" options={SortOptions} selected={sortBy} onChange={onSortChange}></Dropdown>
 				</Flexbox>
 			</Flexbox>
 			{filteredItems.map((item) => (

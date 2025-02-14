@@ -2,8 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import Flexbox from "./flexbox";
 import { ReactComponent as ArrowDownIcon } from '../assets/icons/arrow-down.svg';
 
-export default function Dropdown({options, label, onChange}) {
-    const [selected, setSelected] = useState(options[0]); 
+export default function Dropdown({options, selected, label, onChange}) {
+    let selectedIndex = options.findIndex(option => option.value === selected);
+    if (selectedIndex === -1) {
+        selectedIndex= 0; 
+    }
+    const [selectedOption, setSelectedOption] = useState(options[selectedIndex]); 
     const dropdownRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
   
@@ -13,7 +17,7 @@ export default function Dropdown({options, label, onChange}) {
       };
 
     const onDropdownOptionClick = (option) => {
-        setSelected(option);
+        setSelectedOption(option);
         onChange(option.value);
         setIsOpen(false);
     };
@@ -39,15 +43,15 @@ export default function Dropdown({options, label, onChange}) {
         <div className="dropdown" ref={dropdownRef}>
             <div className="dropdown-button" onClick={onDropdownButtonClick}>
                 {label && <span className="dropdown-button-label">{label}</span>}
-                <Flexbox alignItems="center" justifyContent="center" gap="5px" style={{color: selected.color || '' }}>
-                    {selected.icon && getDropdownIcon(selected)}
-                    <span>{selected.label}</span>
+                <Flexbox alignItems="center" justifyContent="center" gap="5px" style={{color: selectedOption.color || '' }}>
+                    {selectedOption.icon && getDropdownIcon(selectedOption)}
+                    <span>{selectedOption.label}</span>
                 </Flexbox>
                 <ArrowDownIcon className="icon" width="10" height="10"/>
             </div>
             <div className={`dropdown-menu ${isOpen && 'open'}`}>
                 {options.map(option => (
-                    <div className={`dropdown-menu-option ${option.value === selected.value && 'selected'}`} key={option.value} onClick={() => onDropdownOptionClick(option)}>
+                    <div className={`dropdown-menu-option ${option.value === selectedOption.value && 'selected'}`} key={option.value} onClick={() => onDropdownOptionClick(option)}>
                         <Flexbox alignItems="center" justifyContent="center" gap="5px" style={{color: option.color || '' }}>
                             {option.icon && getDropdownIcon(option)}
                             {option.label}
