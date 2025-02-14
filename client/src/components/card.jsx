@@ -4,6 +4,7 @@ import Flexbox from './flexbox';
 import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from '../constants/status';
 import { ReactComponent as ClockIcon } from '../assets/icons/clock.svg';
 import { ReactComponent as SettingsIcon } from '../assets/icons/settings.svg';
+import { ReactComponent as HourglassIcon } from '../assets/icons/hourglass.svg';
 import BadgeList from './badge-list';
 import { BlockchainIconMap } from '../constants/blockchain';
 
@@ -29,7 +30,7 @@ export default function Card({data}) {
                 <Flexbox gap="10px" alignItems="center">
                     <Flexbox gap="5px" alignItems="center" style={{color: StatusColorMapping[status]}}>
                         <StatusIcon status={status}/>
-                        <Text type="span">{StatusLabelMapping[status]}</Text>
+                        <Text style={{fontWeight: 600}} type="span">{StatusLabelMapping[status]}</Text>
                     </Flexbox>
                     <span className="dot"></span>
                     <button type='button' className='inline-button' disabled={status === Status.PENDING || status === Status.UPDATING}>
@@ -41,10 +42,10 @@ export default function Card({data}) {
             
             <Flexbox justifyContent="space-between" style={{marginTop:'5px'}}>
                 <Flexbox gap="10px" alignItems="center">
-                    <Text type="span">{testnetOffChainActors.length} off-chain actor(s)</Text>
+                    <Text type="span">{testnetOffChainActors.length} off-chain actor{testnetOffChainActors.length > 1 && 's'}</Text>
                     {testnetChains.length > 0 && <>
                         <span className="dot"></span>
-                        <Text type="span">{testnetChains.length} blockchain(s)</Text>
+                        <Text type="span">{testnetChains.length} blockchain{testnetChains.length > 1 && 's'}</Text>
                         <BadgeList list={blockchainIcons}></BadgeList>
                     </>}
                 </Flexbox>
@@ -58,7 +59,7 @@ export default function Card({data}) {
                 <Flexbox gap="10px" alignItems="center" style={{marginTop:'5px'}}>
                 {offChainUpdatingCount > 0 && (
                     <Flexbox gap="5px" alignItems="center" style={{color: StatusColorMapping[status]}}>
-                        <span className='icon'></span>
+                        <HourglassIcon width="14" height="14" fill="currentColor" />
                         <span>{offChainUpdatingCount} off-chain updating</span>
                     </Flexbox>
                 )}
@@ -66,7 +67,7 @@ export default function Card({data}) {
                     <>
                     <span className='dot'></span>
                     <Flexbox gap="5px" alignItems="center" style={{color: StatusColorMapping[status]}}>
-                        <span className="icon"></span>
+                        <HourglassIcon width="14" height="14" fill="currentColor" />
                         <span>Blockchain updating</span>
                     </Flexbox>
                     </>

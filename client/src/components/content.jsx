@@ -5,6 +5,7 @@ import Text from "./text";
 import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from "../constants/status";
 import { SortOptions, SortType } from "../constants/sort";
 import Flexbox from "./flexbox";
+import { ReactComponent as AddIcon } from '../assets/icons/add.svg';
 
 export default function Content() {
 	  const [items, setItems] = useState([]);
@@ -90,21 +91,21 @@ export default function Content() {
 	return (
 		<>
 			<Flexbox alignItems="center" justifyContent="space-between" style={{marginBottom: '20px'}}>
-				<Text type="h2">Testnets ({filteredItems.length || 0})</Text>
+				<Flexbox alignItems="center" gap="20px">
+					<Text type="h2">Testnets ({filteredItems.length || 0})</Text>
+					<button type='button' className='inline-button inline-button--big'>
+						<AddIcon width="14" height="14" fill="currentColor" />
+						<span>New Testnet</span>
+					</button>
+				</Flexbox>
 				<Flexbox  alignItems="center" gap="10px">
 					{filterOptions.length > 0 && (
 						<>
-							<Flexbox alignItems="center" gap="10px">
-								<Text type="span">Filter by:</Text>
-								<Dropdown options={filterOptions} onChange={onFilterChange}></Dropdown>
-							</Flexbox>
+							<Dropdown label="Filter by:" options={filterOptions} onChange={onFilterChange}></Dropdown>
 							<span className="dot"></span>
 						</>
 					)}
-					<Flexbox alignItems="center" gap="10px">
-						<Text type="span">Sort by:</Text>
-						<Dropdown options={SortOptions} onChange={onSortChange}></Dropdown>
-					</Flexbox>
+					<Dropdown label="Sort by:" options={SortOptions} onChange={onSortChange}></Dropdown>
 				</Flexbox>
 			</Flexbox>
 			{filteredItems.map((item) => (

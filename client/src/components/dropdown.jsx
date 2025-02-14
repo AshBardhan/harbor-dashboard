@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Flexbox from "./flexbox";
+import { ReactComponent as ArrowDownIcon } from '../assets/icons/arrow-down.svg';
 
-export default function Dropdown({options, onChange}) {
+export default function Dropdown({options, label, onChange}) {
     const [selected, setSelected] = useState(options[0]); 
     const dropdownRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
@@ -37,10 +38,12 @@ export default function Dropdown({options, onChange}) {
     return (
         <div className="dropdown" ref={dropdownRef}>
             <div className="dropdown-button" onClick={onDropdownButtonClick}>
+                {label && <span className="dropdown-button-label">{label}</span>}
                 <Flexbox alignItems="center" justifyContent="center" gap="5px" style={{color: selected.color || '' }}>
                     {selected.icon && getDropdownIcon(selected)}
-                    {selected.label}
+                    <span>{selected.label}</span>
                 </Flexbox>
+                <ArrowDownIcon className="icon" width="10" height="10"/>
             </div>
             <div className={`dropdown-menu ${isOpen && 'open'}`}>
                 {options.map(option => (
