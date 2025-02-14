@@ -16,7 +16,7 @@ export default function Card({data}) {
 
     const StatusIcon = ({status}) => {
         const IconComponent = statusIconMap[status] || null;
-        return IconComponent ? <IconComponent width="14" height="14" fill="currentColor" /> : null;
+        return IconComponent ? <IconComponent width="14" height="14" /> : null;
       };
 
     return (
@@ -34,7 +34,7 @@ export default function Card({data}) {
                     </Flexbox>
                     <span className="dot"></span>
                     <button type='button' className='inline-button' disabled={status === Status.PENDING || status === Status.UPDATING}>
-                        <SettingsIcon width="14" height="14" fill="currentColor" />
+                        <SettingsIcon width="14" height="14" />
                         <span>Settings</span>
                     </button>
                 </Flexbox>
@@ -50,7 +50,7 @@ export default function Card({data}) {
                     </>}
                 </Flexbox>
                 <Flexbox gap="5px" alignItems="center" className="timestamp">
-                    <ClockIcon width="14" height="14" fill="currentColor" />
+                    <ClockIcon width="14" height="14" />
                     <Text type="span">Modified {moment(data.updated_at).fromNow()}</Text>
                 </Flexbox>
             </Flexbox>
@@ -59,7 +59,7 @@ export default function Card({data}) {
                 <Flexbox gap="10px" alignItems="center" style={{marginTop:'5px'}}>
                 {offChainUpdatingCount > 0 && (
                     <Flexbox gap="5px" alignItems="center" style={{color: StatusColorMapping[status]}}>
-                        <HourglassIcon width="14" height="14" fill="currentColor" />
+                        <HourglassIcon width="14" height="14" />
                         <span>{offChainUpdatingCount} off-chain updating</span>
                     </Flexbox>
                 )}
@@ -67,7 +67,7 @@ export default function Card({data}) {
                     <>
                     <span className='dot'></span>
                     <Flexbox gap="5px" alignItems="center" style={{color: StatusColorMapping[status]}}>
-                        <HourglassIcon width="14" height="14" fill="currentColor" />
+                        <HourglassIcon width="14" height="14" />
                         <span>Blockchain updating</span>
                     </Flexbox>
                     </>

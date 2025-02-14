@@ -24,7 +24,7 @@ export default function Dropdown({options, selected, label, onChange}) {
 
     const getDropdownIcon = (option) => {
         const IconComponent = option?.icon || null;
-        return IconComponent ? <IconComponent width="14" height="14" fill="currentColor" /> : null;
+        return IconComponent ? <IconComponent width="14" height="14" /> : null;
     };
 
     useEffect(() => {

@@ -118,7 +118,7 @@ export default function Content() {
 				<Flexbox alignItems="center" gap="20px">
 					<Text type="h2">Testnets ({filteredItems.length || 0})</Text>
 					<button type='button' className='inline-button inline-button--big'>
-						<AddIcon width="14" height="14" fill="currentColor" />
+						<AddIcon width="14" height="14" />
 						<span>New Testnet</span>
 					</button>
 				</Flexbox>
