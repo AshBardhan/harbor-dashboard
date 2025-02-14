@@ -5,10 +5,10 @@ export default function Container({children}) {
 	return (
 		<div className="page-container">
 			<aside className="page-sidebar">
-				<Sidebar>this is sidebar</Sidebar>
+				<Sidebar/>
 			</aside>
 			<main className="page-content">
-				<Content></Content>
+				<Content/>
 			</main>
 		</div>
 	);
