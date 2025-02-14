@@ -179,6 +179,12 @@ h1,h2,h3,h4,h5.h6 {
   background-color: #FDF7F8;
 }
 
+.tile--fade {
+  border-color: #DDD;
+  box-shadow: none;
+  background-color: transparent;
+}
+
 .tag {
   display: inline-flex;
   border-radius: 12px;

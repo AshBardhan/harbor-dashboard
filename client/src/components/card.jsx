@@ -20,7 +20,7 @@ export default function Card({data}) {
       };
 
     return (
-        <div className={`tile ${status === Status.FAILED && 'tile--error'}`} key={data.id}>
+        <div className={`tile ${status === Status.FAILED && 'tile--error'} ${status === Status.KILLED && 'tile--fade'}`} key={data.id}>
             <Flexbox justifyContent="space-between">
                 <Flexbox gap="10px" alignItems="center">
                     <Text type="h3">{name}</Text>
@@ -33,7 +33,7 @@ export default function Card({data}) {
                         <Text style={{fontWeight: 600}} type="span">{StatusLabelMapping[status]}</Text>
                     </Flexbox>
                     <span className="dot"></span>
-                    <button type='button' className='inline-button' disabled={status === Status.PENDING || status === Status.UPDATING}>
+                    <button type='button' className='inline-button' disabled={status === Status.CLONING ||status === Status.PENDING || status === Status.UPDATING}>
                         <SettingsIcon width="14" height="14" />
                         <span>Settings</span>
                     </button>

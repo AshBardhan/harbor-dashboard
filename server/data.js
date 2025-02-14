@@ -41,7 +41,7 @@
         {
           name: "into-ordinary",
           id: "b9e1a987-d4a3-47a4-a019-19844d02f84e",
-          status: "FAILED",
+          status: "KILLED",
           endpoint: "3.110.193.51",
           created_at: "2022-10-27T09:37:59.060386+00:00",
           updated_at: "2022-10-27T09:40:20.534066+00:00",
@@ -907,7 +907,7 @@
         {
           name: "testnet_name1",
           id: "d6b6f553-30c9-4815-9fc9-e292a1c6116b",
-          status: "PENDING",
+          status: "CLONING",
           endpoint: null,
           created_at: "2022-10-26T15:14:11.895126+00:00",
           updated_at: "2022-10-26T15:14:11.895126+00:00",
