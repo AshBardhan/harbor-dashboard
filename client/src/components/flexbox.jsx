@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 
 const Flexbox = ({
-  direction = 'row',
-  justifyContent = 'flex-start',
-  alignItems = 'stretch',
-  gap = '0',
-  wrap = 'nowrap',
+  direction = "row",
+  justifyContent = "flex-start",
+  alignItems = "stretch",
+  gap = "0",
+  wrap = "nowrap",
   children,
-  className = '',
+  className = "",
   style = {},
   ...props
 }) => {
   const flexStyles = {
-    display: 'flex',
+    display: "flex",
     flexDirection: direction,
     justifyContent: justifyContent,
     alignItems: alignItems,
     gap: gap,
     flexWrap: wrap,
-    ...style
+    ...style,
   };
 
   return (

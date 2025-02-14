@@ -3,20 +3,28 @@ html {
 }
 
 body {
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: 1.4rem;
   line-height: 2.4rem;
-  background-color: #F6F8FA;
+  background-color: #f6f8fa;
 }
 
-*, *::before, *::after {
-	box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-h1,h2,h3,h4,h5.h6 {
+h1,
+h2,
+h3,
+h4,
+h5.h6 {
   margin: 0;
   color: black;
 }
@@ -30,7 +38,7 @@ h1,h2,h3,h4,h5.h6 {
 .page-header {
   background-color: #000;
   color: #fff;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   flex-shrink: 0;
   display: flex;
   height: 6rem;
@@ -52,7 +60,8 @@ h1,h2,h3,h4,h5.h6 {
   text-decoration: none;
   color: #aaa;
 
-  &:hover, &.selected {
+  &:hover,
+  &.selected {
     color: #fff;
   }
 }
@@ -113,13 +122,13 @@ h1,h2,h3,h4,h5.h6 {
     cursor: pointer;
 
     &:hover {
-      background-color: #F6F8FA;
+      background-color: #f6f8fa;
     }
 
     &.selected {
-      background-color: #F6F8FA;
+      background-color: #f6f8fa;
       font-weight: 600;
-      color: #2F80ED;
+      color: #2f80ed;
     }
 
     &:last-child {
@@ -131,7 +140,7 @@ h1,h2,h3,h4,h5.h6 {
     display: inline-flex;
     height: 20px;
     align-items: center;
-    border: 1px solid #F0F0F0;
+    border: 1px solid #f0f0f0;
     background-color: #fff;
     font-weight: 600;
     color: #666;
@@ -165,22 +174,22 @@ h1,h2,h3,h4,h5.h6 {
   background: white;
   border-radius: 20px;
   padding: 20px;
-  border: 1px solid #E5E5E5;
-  box-shadow: 0px 4px 6px 0px rgba(0,0,0,6%);
+  border: 1px solid #e5e5e5;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 6%);
   margin-bottom: 20px;
-  
+
   &:last-child {
-      margin-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
 .tile--error {
-  border-color: #CD3A4C;
-  background-color: #FDF7F8;
+  border-color: #cd3a4c;
+  background-color: #fdf7f8;
 }
 
 .tile--fade {
-  border-color: #DDD;
+  border-color: #ddd;
   box-shadow: none;
   background-color: transparent;
 }
@@ -198,7 +207,7 @@ h1,h2,h3,h4,h5.h6 {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #D2D5DB;
+  background: #d2d5db;
 }
 
 .icon {
@@ -211,7 +220,7 @@ h1,h2,h3,h4,h5.h6 {
   outline: 0;
   border: 0;
   background-color: transparent;
-  color: #2F80ED;
+  color: #2f80ed;
   cursor: pointer;
   font-family: inherit;
   align-items: center;
@@ -263,8 +272,8 @@ h1,h2,h3,h4,h5.h6 {
   border-radius: 10px;
   width: 200px;
   background-color: #fff;
-  border: 1px solid #DDDDDD;
-  box-shadow: 0px 8px 24px 0px rgba(0,0,0,10%);
+  border: 1px solid #dddddd;
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 10%);
   opacity: 0;
   visibility: hidden;
 
@@ -281,8 +290,9 @@ h1,h2,h3,h4,h5.h6 {
   font-weight: 600;
   margin-bottom: 5px;
 
-  &:hover, &.selected {
-    background-color: #F6F6F6;
+  &:hover,
+  &.selected {
+    background-color: #f6f6f6;
   }
 
   &:last-child {

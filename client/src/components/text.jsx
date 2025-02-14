@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 export default function Text({
-    type = 'p',
-    color,
-    children,
-    className,
-    style = {},
-    ...props
-}){
+  type = "p",
+  color,
+  children,
+  className,
+  style = {},
+  ...props
+}) {
   const Element = type;
   const textStyles = {
     color,
@@ -19,4 +19,4 @@ export default function Text({
       {children}
     </Element>
   );
-};
+}
