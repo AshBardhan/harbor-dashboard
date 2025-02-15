@@ -1,24 +1,34 @@
 html {
-  font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 body {
-  margin: 0;
-  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1.4rem;
-  line-height: 2.4rem;
-  letter-spacing: -0.2px;
-  background-color: #f6f8fa;
+	margin: 0;
+	font-family:
+		'Work Sans',
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		'Roboto',
+		'Oxygen',
+		'Ubuntu',
+		'Cantarell',
+		'Fira Sans',
+		'Droid Sans',
+		'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 1.4rem;
+	line-height: 2.4rem;
+	letter-spacing: -0.2px;
+	background-color: #f6f8fa;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 h1,
@@ -27,51 +37,51 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  color: black;
+	margin: 0;
+	color: black;
 }
 
 .page-layout {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
 .page-container {
-  flex-grow: 1;
-  overflow-y: auto;
-  display: flex;
-  position: relative;
+	flex-grow: 1;
+	overflow-y: auto;
+	display: flex;
+	position: relative;
 }
 
 .page-content {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 40px;
+	flex-grow: 1;
+	overflow-y: auto;
+	padding: 40px;
 }
 
 .tag {
-  display: inline-flex;
-  border-radius: 12px;
-  color: #999;
-  background-color: #f6f6f6;
-  padding: 0 10px;
-  font-weight: 600;
+	display: inline-flex;
+	border-radius: 12px;
+	color: #999;
+	background-color: #f6f6f6;
+	padding: 0 10px;
+	font-weight: 600;
 }
 
 .dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #d2d5db;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: #d2d5db;
 }
 
 .icon {
-  display: inline-flex;
+	display: inline-flex;
 }
 
 .timestamp {
-  color: #999999;
-  font-size: 12px;
-  font-weight: 500;
+	color: #999999;
+	font-size: 12px;
+	font-weight: 500;
 }

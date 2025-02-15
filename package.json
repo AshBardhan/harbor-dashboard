@@ -1,0 +1,21 @@
+{
+  "name": "frontend-take-home",
+  "version": "1.0.0",
+  "repository": "git@github.com:harbor-xyz/frontend-take-home.git",
+  "author": "Prakash Sanker <praks5432@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "lint-staged": {
+    "{client,server}/**/*.{js,jsx,scss}": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "scripts": {
+    "start:server": "node index.js"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.1"
+  }
+}

@@ -1,10 +1,8 @@
-import "./App.scss";
-import AppContainer from "./container/AppContainer";
+import './App.scss';
+import AppContainer from './container/AppContainer';
 
 function App() {
-  return (
-    <AppContainer/>
-  );
+	return <AppContainer />;
 }
 
 export default App;
