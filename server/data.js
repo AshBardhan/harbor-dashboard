@@ -367,7 +367,7 @@ module.exports = {
     {
       name: "school-kill",
       id: "f844158b-cd71-4674-b85e-fe5bfcbcc728",
-      status: "RUNNING",
+      status: "FAILED",
       endpoint: "65.0.94.101",
       created_at: "2022-10-27T09:04:47.114863+00:00",
       updated_at: "2022-10-27T09:07:08.069785+00:00",

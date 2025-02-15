@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "./card";
-import Dropdown from "./dropdown";
-import Text from "./text";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Status,
   StatusColorMapping,
@@ -9,11 +7,9 @@ import {
   StatusLabelMapping,
 } from "../constants/status";
 import { SortOptions, SortType } from "../constants/sort";
-import Flexbox from "./flexbox";
-import { ReactComponent as AddIcon } from "../assets/icons/add.svg";
-import { useNavigate, useLocation } from "react-router-dom";
+import TestnetContent from "../components/templates/TestnetContent";
 
-export default function Content() {
+export default function ContentContainer() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -119,44 +115,18 @@ export default function Content() {
   const onFilterChange = (value) => {
     setFilterBy(value);
   };
-
+  
   return (
-    <>
-      <Flexbox
-        alignItems="center"
-        justifyContent="space-between"
-        style={{ marginBottom: "20px" }}
-      >
-        <Flexbox alignItems="center" gap="20px">
-          <Text type="h2">Testnets ({filteredItems.length || 0})</Text>
-          <button type="button" className="inline-button inline-button--big">
-            <AddIcon width="14" height="14" />
-            <span>New Testnet</span>
-          </button>
-        </Flexbox>
-        <Flexbox alignItems="center" gap="10px">
-          {filterOptions.length > 0 && (
-            <>
-              <Dropdown
-                label="Filter by:"
-                options={filterOptions}
-                selected={filterBy}
-                onChange={onFilterChange}
-              ></Dropdown>
-              <span className="dot"></span>
-            </>
-          )}
-          <Dropdown
-            label="Sort by:"
-            options={SortOptions}
-            selected={sortBy}
-            onChange={onSortChange}
-          ></Dropdown>
-        </Flexbox>
-      </Flexbox>
-      {filteredItems.map((item) => (
-        <Card key={item.id} data={item}></Card>
-      ))}
-    </>
+    <main className="page-content">
+      <TestnetContent
+        items={filteredItems}
+        onSortChange={onSortChange}
+        onFilterChange={onFilterChange}
+        sortOptions={SortOptions}
+        filterOptions={filterOptions}
+        sortBy={sortBy}
+        filterBy={filterBy}
+      />
+    </main>
   );
 }

@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
-import Flexbox from "./flexbox";
-import { ReactComponent as ArrowDownIcon } from "../assets/icons/arrow-down.svg";
+import React, { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
+import Flexbox from "../atoms/Flexbox";
+import { ReactComponent as ArrowDownIcon } from "../../assets/icons/arrow-down.svg";
+import "./Dropdown.scss";
 
-export default function Dropdown({ options, selected, label, onChange }) {
+const Dropdown = ({ options, selected, label, onChange }) => {
   let selectedIndex = options.findIndex((option) => option.value === selected);
   if (selectedIndex === -1) {
     selectedIndex = 0;
@@ -37,7 +39,7 @@ export default function Dropdown({ options, selected, label, onChange }) {
     return () => {
       window.removeEventListener("click", pageClickEvent);
     };
-  });
+  }, []);
 
   return (
     <div className="dropdown" ref={dropdownRef}>
@@ -75,4 +77,20 @@ export default function Dropdown({ options, selected, label, onChange }) {
       </div>
     </div>
   );
-}
+};
+
+Dropdown.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      color: PropTypes.string,
+      icon: PropTypes.elementType,
+    })
+  ).isRequired,
+  selected: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
+
+export default Dropdown;

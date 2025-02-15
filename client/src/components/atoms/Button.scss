@@ -1,0 +1,35 @@
+.button {
+    display: inline-flex;
+    gap: 5px;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    color: #999;
+    cursor: pointer;
+    font-family: inherit;
+    align-items: center;
+    line-height: inherit;
+    font-weight: 600;
+  
+    &[disabled] {
+      color: #aaa;
+      pointer-events: none;
+    }
+  
+    &:hover {
+      color: #666;
+    }
+  }
+
+  .button--primary {
+    color: #2f80ed;
+
+    &:hover {
+      color: #173f73;
+    }
+  }
+  
+  .button--big {
+    font-size: 1.6rem;
+  }
+  

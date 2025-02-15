@@ -1,0 +1,19 @@
+.badges {
+    display: flex;
+  }
+  
+  .badge {
+    background-color: #fff;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -6px;
+  
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  
