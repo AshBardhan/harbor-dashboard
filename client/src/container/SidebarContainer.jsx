@@ -50,8 +50,6 @@ let sidebarConfig = [
 
 export default function SidebarContainer() {
 	return (
-		<aside className="page-sidebar">
 			<Sidebar sections={sidebarConfig} />
-		</aside>
 	);
 }

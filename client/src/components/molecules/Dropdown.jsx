@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Flexbox from '../atoms/Flexbox';
-import { ReactComponent as ArrowDownIcon } from '../../assets/icons/arrow-down.svg';
+import { ReactComponent as ArrowDownShortIcon } from '../../assets/icons/arrow-down-short.svg';
 import './Dropdown.scss';
 
 const Dropdown = ({ options, selected, label, onChange }) => {
@@ -49,9 +49,9 @@ const Dropdown = ({ options, selected, label, onChange }) => {
 					{selectedOption.icon && getDropdownIcon(selectedOption)}
 					<span>{selectedOption.label}</span>
 				</Flexbox>
-				<ArrowDownIcon className="icon" width="10" height="10" />
+				<ArrowDownShortIcon className="icon" width="10" height="10" />
 			</div>
-			<div className={`dropdown-menu ${isOpen && 'open'}`}>
+			<div className={`dropdown-menu ${isOpen ? 'open' : ''}`}>
 				{options.map((option) => (
 					<div className={`dropdown-menu-option ${option.value === selectedOption.value && 'selected'}`} key={option.value} onClick={() => onDropdownOptionClick(option)}>
 						<Flexbox alignItems="center" justifyContent="center" gap="5px" style={{ color: option.color || '' }}>

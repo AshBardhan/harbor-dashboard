@@ -1,3 +1,5 @@
+@import './styles/_variables.scss';
+
 html {
 	font-size: 62.5%;
 }
@@ -19,10 +21,10 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-size: 1.4rem;
-	line-height: 2.4rem;
+	font-size: 14px;
+	line-height: 24px;
 	letter-spacing: -0.2px;
-	background-color: #f6f8fa;
+	background-color: $background-color;
 }
 
 *,
@@ -38,33 +40,15 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	color: black;
+	color: $text-color;
 }
 
-.page-layout {
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-}
-
-.page-container {
-	flex-grow: 1;
-	overflow-y: auto;
-	display: flex;
-	position: relative;
-}
-
-.page-content {
-	flex-grow: 1;
-	overflow-y: auto;
-	padding: 40px;
-}
 
 .tag {
 	display: inline-flex;
 	border-radius: 12px;
-	color: #999;
-	background-color: #f6f6f6;
+	color: $tag-color;
+	background-color: $tag-background-color;
 	padding: 0 10px;
 	font-weight: 600;
 }
@@ -73,7 +57,7 @@ h6 {
 	width: 5px;
 	height: 5px;
 	border-radius: 50%;
-	background: #d2d5db;
+	background: $dot-color;
 }
 
 .icon {
@@ -81,7 +65,9 @@ h6 {
 }
 
 .timestamp {
-	color: #999999;
+	color: $timestamp-color;
 	font-size: 12px;
 	font-weight: 500;
 }
+
+@import './styles/_layout.scss';

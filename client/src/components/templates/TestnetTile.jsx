@@ -34,9 +34,13 @@ const TestnetTile = ({ data }) => {
 		}
 	};
 
+	const isSettingButtonDisabled = (status) => {
+		return status === Status.CLONING || status === Status.PENDING || status === Status.UPDATING;	
+	};
+	
 	return (
 		<Tile theme={getTileThemeByStatus(status)} key={data.id}>
-			<Flexbox justifyContent="space-between">
+			<Flexbox justifyContent="space-between" gap="5px" breakpoint={500}>
 				<Flexbox gap="10px" alignItems="center">
 					<Text type="h3">{name}</Text>
 					<span className="tag">5321</span>
@@ -48,15 +52,15 @@ const TestnetTile = ({ data }) => {
 						<Text fontWeight={600}>{StatusLabelMapping[status]}</Text>
 					</Flexbox>
 					<span className="dot"></span>
-					<Button type="button" theme="primary" disabled={status === Status.CLONING || status === Status.PENDING || status === Status.UPDATING}>
+					<Button type="button" theme="primary" disabled={isSettingButtonDisabled(status)}>
 						<SettingsIcon width="14" height="14" />
 						<Text>Settings</Text>
 					</Button>
 				</Flexbox>
 			</Flexbox>
 
-			<Flexbox justifyContent="space-between" style={{ marginTop: '5px' }}>
-				<Flexbox gap="10px" alignItems="center">
+			<Flexbox justifyContent="space-between" gap="5px" breakpoint={500} style={{ marginTop: '5px' }}>
+				<Flexbox gap="10px" wrap="wrap" alignItems="center">
 					<Text fontWeight={500}>
 						{testnetOffChainActors.length} off-chain actor
 						{testnetOffChainActors.length > 1 && 's'}
@@ -79,7 +83,7 @@ const TestnetTile = ({ data }) => {
 			</Flexbox>
 
 			{(offChainUpdatingCount > 0 || isBlockchainUpdating) && (
-				<Flexbox gap="10px" alignItems="center" style={{ marginTop: '5px' }}>
+				<Flexbox gap="10px" alignItems="center" wrap="wrap" style={{ marginTop: '5px' }}>
 					{offChainUpdatingCount > 0 && (
 						<Flexbox gap="5px" alignItems="center" style={{ color: StatusColorMapping[status] }}>
 							<HourglassIcon width="14" height="14" />
