@@ -35,9 +35,9 @@ const TestnetTile = ({ data }) => {
 	};
 
 	const isSettingButtonDisabled = (status) => {
-		return status === Status.CLONING || status === Status.PENDING || status === Status.UPDATING;	
+		return status === Status.CLONING || status === Status.PENDING || status === Status.UPDATING;
 	};
-	
+
 	return (
 		<Tile theme={getTileThemeByStatus(status)} key={data.id}>
 			<Flexbox justifyContent="space-between" gap="5px" breakpoint={500}>

@@ -49,7 +49,5 @@ let sidebarConfig = [
 ];
 
 export default function SidebarContainer() {
-	return (
-			<Sidebar sections={sidebarConfig} />
-	);
+	return <Sidebar sections={sidebarConfig} />;
 }

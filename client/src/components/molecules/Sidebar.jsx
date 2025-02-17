@@ -10,12 +10,12 @@ import Text from '../atoms/Text';
 
 const Sidebar = ({ sections }) => {
 	const [showSidebar, setShowSideBar] = useState(true);
-	
+
 	const toggleSidebar = () => {
 		console.log('clicked');
 		setShowSideBar(!showSidebar);
 	};
-	
+
 	return (
 		<aside className={`page-sidebar ${!showSidebar ? 'hide' : ''}`}>
 			<nav className="page-sidebar-nav">

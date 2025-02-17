@@ -92,14 +92,6 @@ export default function ContentContainer() {
 		setFilteredItems(filtered);
 	}, [sortBy, filterBy, items]);
 
-	if (loading) {
-		return <div>Loading...</div>;
-	}
-
-	if (error) {
-		return <div>Error: {error.message}</div>;
-	}
-
 	const onSortChange = (value) => {
 		setSortBy(value);
 	};
@@ -110,7 +102,13 @@ export default function ContentContainer() {
 
 	return (
 		<main className="page-content">
-			<TestnetContent items={filteredItems} onSortChange={onSortChange} onFilterChange={onFilterChange} sortOptions={SortOptions} filterOptions={filterOptions} sortBy={sortBy} filterBy={filterBy} />
+			{loading ? (
+				<div>Loading...</div>
+			) : error ? (
+				<div>Error: {error.message}</div>
+			) : (
+				<TestnetContent items={filteredItems} onSortChange={onSortChange} onFilterChange={onFilterChange} sortOptions={SortOptions} filterOptions={filterOptions} sortBy={sortBy} filterBy={filterBy} />
+			)}
 		</main>
 	);
 }
