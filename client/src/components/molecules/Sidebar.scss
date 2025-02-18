@@ -121,7 +121,7 @@
 	box-shadow: 4px 2px 8px 4px rgba(#000, 10%);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $page-breakpoint) {
 	.page-sidebar {
 		position: fixed;
 		z-index: 2;
