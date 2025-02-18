@@ -5,9 +5,9 @@ export default function ContentContainer() {
 	return (
 		<main className="page-content">
 			<Routes>
-				 {/* Routing to Testnets page by default */}
-        <Route path="*" element={<Testnets />} />
-      </Routes>
+				{/* Routing to Testnets page by default */}
+				<Route path="*" element={<Testnets />} />
+			</Routes>
 		</main>
 	);
 }

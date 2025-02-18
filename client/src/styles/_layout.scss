@@ -19,6 +19,15 @@
 	padding: 40px;
 }
 
+.flex-child-grow {
+	flex-grow: 1;
+	min-width: 0;
+}
+
+.flex-child-shrink {
+	flex-shrink: 0;
+}
+
 @media screen and (max-width: $page-breakpoint) {
 	.page-content {
 		padding: 20px;

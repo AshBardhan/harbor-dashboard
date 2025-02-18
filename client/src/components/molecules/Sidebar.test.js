@@ -52,8 +52,8 @@ describe('Sidebar Component', () => {
 		const { container } = renderSidebar();
 		const sidebarTitle = container.querySelector('.page-sidebar-title span:last-child');
 		const sidebarSections = container.querySelectorAll('.page-sidebar-section');
-	  const sidebarLinks = container.querySelectorAll('.page-sidebar-link');
-	
+		const sidebarLinks = container.querySelectorAll('.page-sidebar-link');
+
 		expect(sidebarTitle).toBeInTheDocument();
 		expect(sidebarTitle.textContent).toBe('Section Heading');
 		expect(sidebarSections.length).toBe(sections.length);
@@ -61,7 +61,7 @@ describe('Sidebar Component', () => {
 		sidebarLinks.forEach((link, index) => {
 			expect(link).toBeInTheDocument();
 			expect(link.querySelector('.title').textContent).toBe(sections[0].items[index].title);
-		})
+		});
 	});
 
 	it('toggles the sidebar visibility when the button is clicked', async () => {

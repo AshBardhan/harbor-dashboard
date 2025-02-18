@@ -19,7 +19,7 @@ const Sidebar = ({ sections }) => {
 		<aside className={`page-sidebar ${!showSlidingSidebar ? 'hide' : ''}`}>
 			<nav className="page-sidebar-nav">
 				<div className="page-sidebar-slider-button">
-					<Button className="action-button" onClick={toggleSidebar}>
+					<Button className="action-button" aria-label={showSlidingSidebar ? 'Slide In' : 'Slide Out'} onClick={toggleSidebar}>
 						<ArrowRightShortIcon width="12" height="12" />
 					</Button>
 				</div>
@@ -44,7 +44,7 @@ const Sidebar = ({ sections }) => {
 												<Text className="title">{item.title}</Text>
 												{item.count && <span className="count">{item.count}</span>}
 												{item.actionIcon && (
-													<Button className="action-button">
+													<Button className="action-button" aria-label={'Action'}>
 														<item.actionIcon width="12" height="12" />
 													</Button>
 												)}

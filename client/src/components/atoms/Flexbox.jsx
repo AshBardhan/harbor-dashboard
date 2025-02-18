@@ -67,7 +67,7 @@ Flexbox.propTypes = {
 	alignItems: PropTypes.oneOf(['stretch', 'flex-start', 'flex-end', 'center', 'baseline']),
 	gap: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	wrap: PropTypes.oneOf(['nowrap', 'wrap', 'wrap-reverse']),
-	breakpoint: PropTypes.number, // Optional breakpoint prop
+	breakpoint: PropTypes.number,
 	children: PropTypes.node.isRequired,
 	className: PropTypes.string,
 	style: PropTypes.object,

@@ -40,13 +40,13 @@ const TestnetTile = ({ data }) => {
 
 	return (
 		<Tile theme={getTileThemeByStatus(status)} key={data.id}>
-			<Flexbox justifyContent="space-between" gap="5px" breakpoint={500}>
-				<Flexbox gap="10px" alignItems="center">
-					<Text type="h3">{name}</Text>
-					<span className="tag">5321</span>
+			<Flexbox justifyContent="space-between" gap="5px 30px" breakpoint={500}>
+				<Flexbox gap="10px" alignItems="center" className="flex-child-grow">
+					<Text className="ellipsize" type="h3">{name}</Text>
+					<span className="tag flex-child-shrink">5321</span>
 				</Flexbox>
 
-				<Flexbox gap="10px" alignItems="center">
+				<Flexbox gap="10px" alignItems="center"className="flex-child-shrink">
 					<Flexbox gap="5px" alignItems="center" style={{ color: StatusColorMapping[status] }}>
 						<StatusIcon status={status} />
 						<Text fontWeight={600}>{StatusLabelMapping[status]}</Text>

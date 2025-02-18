@@ -43,6 +43,12 @@ h6 {
 	color: $text-color;
 }
 
+.ellipsize {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .tag {
 	display: inline-flex;
 	border-radius: 12px;
