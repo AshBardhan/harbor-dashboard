@@ -100,15 +100,15 @@ export default function Testnet() {
 		setFilterBy(value);
 	};
 
+	if (loading) {
+		return <div>Loading...</div>;
+	}
+
+	if (error) {
+		return <div>Error: {error.message}</div>;
+	}
+
 	return (
-		<>
-			{loading ? (
-				<div>Loading...</div>
-			) : error ? (
-				<div>Error: {error.message}</div>
-			) : (
-				<TestnetContent items={filteredItems} onSortChange={onSortChange} onFilterChange={onFilterChange} sortOptions={SortOptions} filterOptions={filterOptions} sortBy={sortBy} filterBy={filterBy} />
-			)}
-		</>
+		<TestnetContent items={filteredItems} onSortChange={onSortChange} onFilterChange={onFilterChange} sortOptions={SortOptions} filterOptions={filterOptions} sortBy={sortBy} filterBy={filterBy} />
 	);
 }

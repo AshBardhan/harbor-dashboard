@@ -18,19 +18,28 @@ const TestnetContent = ({ items, filterOptions, sortOptions, sortBy, filterBy, o
 						<Text>New Testnet</Text>
 					</Button>
 				</Flexbox>
-				<Flexbox alignItems="center" wrap="wrap" gap="10px">
-					{filterOptions.length > 0 && (
-						<>
-							<Dropdown label="Filter by:" options={filterOptions} selected={filterBy} onChange={onFilterChange} />
-							<span className="dot"></span>
-						</>
-					)}
-					<Dropdown label="Sort by:" options={sortOptions} selected={sortBy} onChange={onSortChange} />
-				</Flexbox>
+				{items && items.length && (
+					<Flexbox alignItems="center" wrap="wrap" gap="10px">
+						{filterOptions.length > 0 && (
+							<>
+								<Dropdown label="Filter by:" options={filterOptions} selected={filterBy} onChange={onFilterChange} />
+								<span className="dot"></span>
+							</>
+						)}
+						<Dropdown label="Sort by:" options={sortOptions} selected={sortBy} onChange={onSortChange} />
+					</Flexbox>
+				)}
 			</Flexbox>
-			{items.map((item) => (
-				<TestnetTile key={item.id} data={item} />
-			))}
+			{items && items.length ? (
+				<div role="list">
+					{items.map((item) => (
+						<TestnetTile key={item.id} data={item} />
+					))}
+				</div>
+			) : (
+				<div>No testnets found</div>
+			)}
+			{}
 		</>
 	);
 };
