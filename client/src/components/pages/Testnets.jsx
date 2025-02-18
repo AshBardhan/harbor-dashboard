@@ -58,7 +58,7 @@ export default function Testnet() {
 		const searchParams = new URLSearchParams(location.search);
 		const filterParam = searchParams.get('filterBy');
 		const sortParam = searchParams.get('sortBy');
-	
+
 		filterParam && setFilterBy(filterParam);
 		sortParam && setSortBy(sortParam);
 	}, [location.search]);

@@ -28,7 +28,7 @@ const Sidebar = ({ sections }) => {
 						{section.backLink ? (
 							<Button href={section.backLink.href} className="page-sidebar-backlink">
 								<ArrowLeftIcon width="16" height="16" />
-								<Text>{section.backLink.text}</Text>
+								<Text className="title">{section.backLink.text}</Text>
 							</Button>
 						) : (
 							<>
@@ -41,7 +41,7 @@ const Sidebar = ({ sections }) => {
 										<li key={itemIndex}>
 											<Link to={item.link} className={`page-sidebar-link ${item.selected ? 'selected' : ''}`}>
 												<item.icon width="16" height="16" />
-												<Text>{item.title}</Text>
+												<Text className="title">{item.title}</Text>
 												{item.count && <span className="count">{item.count}</span>}
 												{item.actionIcon && (
 													<Button className="action-button">

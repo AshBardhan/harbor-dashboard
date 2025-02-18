@@ -47,7 +47,7 @@ const Dropdown = ({ options, selected, label, onChange }) => {
 				{label && <span className="dropdown-button-label">{label}</span>}
 				<Flexbox alignItems="center" justifyContent="center" gap="5px" style={{ color: selectedOption.color || '' }}>
 					{selectedOption.icon && getDropdownIcon(selectedOption)}
-					<span>{selectedOption.label}</span>
+					<span className="dropdown-button-selected-label">{selectedOption.label}</span>
 				</Flexbox>
 				<ArrowDownShortIcon className="icon" width="10" height="10" />
 			</div>
