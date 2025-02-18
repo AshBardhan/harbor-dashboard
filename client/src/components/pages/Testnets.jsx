@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useLayoutEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from '../../constants/status';
 import { SortOptions, SortType } from '../../constants/sort';
@@ -9,7 +9,6 @@ export default function Testnet() {
 	const [filteredItems, setFilteredItems] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-
 	const [sortBy, setSortBy] = useState(SortType.ASC);
 	const [filterBy, setFilterBy] = useState(Status.ALL);
 	const [filterOptions, setFilterOptions] = useState([]);
@@ -17,6 +16,7 @@ export default function Testnet() {
 	const navigate = useNavigate();
 	const location = useLocation();
 
+	// Fetch data only once
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/testnets`)
 			.then((response) => response.json())
@@ -24,12 +24,14 @@ export default function Testnet() {
 				let testList = data.data.testnet;
 				setItems(testList);
 				setFilteredItems(testList);
+
 				const statusCount = Object.entries(
 					testList.reduce((acc, { status }) => {
 						acc[status] = (acc[status] || 0) + 1;
 						return acc;
 					}, {})
 				);
+
 				setFilterOptions([
 					{
 						label: `${StatusLabelMapping[Status.ALL]} (${testList.length})`,
@@ -52,27 +54,37 @@ export default function Testnet() {
 			});
 	}, []);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const searchParams = new URLSearchParams(location.search);
 		const filterParam = searchParams.get('filterBy');
 		const sortParam = searchParams.get('sortBy');
-
+	
 		filterParam && setFilterBy(filterParam);
 		sortParam && setSortBy(sortParam);
 	}, [location.search]);
 
 	useEffect(() => {
-		const searchParams = new URLSearchParams();
-		searchParams.set('filterBy', filterBy);
-		searchParams.set('sortBy', sortBy);
+		const searchParams = new URLSearchParams(location.search);
+		if (filterBy !== Status.ALL) {
+			searchParams.set('filterBy', filterBy);
+		} else {
+			searchParams.delete('filterBy');
+		}
+		if (sortBy !== SortType.ASC) {
+			searchParams.set('sortBy', sortBy);
+		} else {
+			searchParams.delete('sortBy');
+		}
 
 		navigate({
 			pathname: location.pathname,
 			search: searchParams.toString(),
 		});
-	}, [filterBy, sortBy, navigate, location.pathname]);
+	}, [filterBy, sortBy, navigate, location.pathname, location.search]);
 
 	useEffect(() => {
+		if (items.length === 0) return;
+
 		let filtered = filterBy === Status.ALL ? [...items] : [...items].filter((item) => item.status === filterBy);
 		filtered.sort((a, b) => {
 			switch (sortBy) {
@@ -100,15 +112,15 @@ export default function Testnet() {
 		setFilterBy(value);
 	};
 
-	if (loading) {
-		return <div>Loading...</div>;
-	}
-
-	if (error) {
-		return <div>Error: {error.message}</div>;
-	}
-
 	return (
-		<TestnetContent items={filteredItems} onSortChange={onSortChange} onFilterChange={onFilterChange} sortOptions={SortOptions} filterOptions={filterOptions} sortBy={sortBy} filterBy={filterBy} />
+		<>
+			{loading ? (
+				<div>Loading...</div>
+			) : error ? (
+				<div>Error: {error.message}</div>
+			) : (
+				<TestnetContent items={filteredItems} onSortChange={onSortChange} onFilterChange={onFilterChange} sortOptions={SortOptions} filterOptions={filterOptions} sortBy={sortBy} filterBy={filterBy} />
+			)}
+		</>
 	);
 }
