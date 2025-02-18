@@ -1,5 +1,5 @@
-import './App.scss';
 import AppContainer from './container/AppContainer';
+import './App.scss';
 
 function App() {
 	return <AppContainer />;
