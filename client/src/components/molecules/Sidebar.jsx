@@ -9,15 +9,14 @@ import './Sidebar.scss';
 import Text from '../atoms/Text';
 
 const Sidebar = ({ sections }) => {
-	const [showSidebar, setShowSideBar] = useState(true);
+	const [showSlidingSidebar, setShowSlidingSidebar] = useState(false);
 
 	const toggleSidebar = () => {
-		console.log('clicked');
-		setShowSideBar(!showSidebar);
+		setShowSlidingSidebar(!showSlidingSidebar);
 	};
 
 	return (
-		<aside className={`page-sidebar ${!showSidebar ? 'hide' : ''}`}>
+		<aside className={`page-sidebar ${!showSlidingSidebar ? 'hide' : ''}`}>
 			<nav className="page-sidebar-nav">
 				<div className="page-sidebar-slider-button">
 					<Button className="action-button" onClick={toggleSidebar}>
