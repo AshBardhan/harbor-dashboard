@@ -24,7 +24,6 @@ let sidebarConfig = [
 				count: 8,
 				icon: TestnetsIcon,
 				actionIcon: AddIcon,
-				selected: true,
 			},
 			{
 				id: 'members',
@@ -33,7 +32,6 @@ let sidebarConfig = [
 				count: 1,
 				icon: MembersIcon,
 				actionIcon: AddIcon,
-				selected: false,
 			},
 			{
 				id: 'project-key',
@@ -42,7 +40,6 @@ let sidebarConfig = [
 				count: 8,
 				icon: ProjectKeyIcon,
 				actionIcon: CopyIcon,
-				selected: false,
 			},
 		],
 	},

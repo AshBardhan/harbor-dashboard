@@ -17,26 +17,28 @@ describe('Dropdown Component', () => {
 	};
 
 	it('renders the dropdown with label and default selected option', () => {
-		const { container } = renderDropdown();
-		const dropdownButton = container.querySelector('.dropdown-button-label');
-		const dropdownSelectedLabel = container.querySelector('.dropdown-button-selected-label');
-		expect(dropdownButton.textContent).toBe('Test Dropdown');
-		expect(dropdownSelectedLabel.textContent).toBe('Option 1');
+		renderDropdown();
+
+		const dropdownButton = screen.getByTestId('dropdown-button-label');
+		const dropdownSelectedLabel = screen.getByTestId('dropdown-button-selected-label');
+
+		expect(dropdownButton).toHaveTextContent('Test Dropdown');
+		expect(dropdownSelectedLabel).toHaveTextContent('Option 1');
 	});
 
 	it('opens and closes the dropdown menu when clicked', () => {
-		const { container } = renderDropdown();
-		const dropdownButton = container.querySelector('.dropdown-button-label');
-		const dropdownMenu = container.querySelector('.dropdown-menu');
-		const dropdownOptions = container.querySelectorAll('.dropdown-menu-option');
+		renderDropdown();
+
+		const dropdownButton = screen.getByTestId('dropdown-button-label');
+		const dropdownMenu = screen.getByTestId('dropdown-menu');
 
 		fireEvent.click(dropdownButton);
 		expect(dropdownMenu).toHaveClass('open');
 
-		expect(dropdownOptions.length).toBe(options.length);
-		dropdownOptions.forEach((option, index) => {
-			expect(option).toBeVisible();
-			expect(option.textContent).toBe(options[index].label);
+		options.forEach((option, index) => {
+			const dropdownOption = screen.getByTestId(`dropdown-option-${index}`);
+			expect(dropdownOption).toBeVisible();
+			expect(dropdownOption).toHaveTextContent(option.label);
 		});
 
 		fireEvent.click(dropdownButton);
@@ -44,30 +46,32 @@ describe('Dropdown Component', () => {
 	});
 
 	it('selects an option and calls onChange', () => {
-		const { container } = renderDropdown();
-		const dropdownButton = container.querySelector('.dropdown-button-label');
-		const dropdownOptions = container.querySelectorAll('.dropdown-menu-option');
-		const dropdownSelectedLabel = container.querySelector('.dropdown-button-selected-label');
+		renderDropdown();
+
+		const dropdownButton = screen.getByTestId('dropdown-button-label');
+		const dropdownSelectedLabel = screen.getByTestId('dropdown-button-selected-label');
 
 		fireEvent.click(dropdownButton);
-		fireEvent.click(dropdownOptions[2]);
+		fireEvent.click(screen.getByTestId('dropdown-option-2'));
+
 		expect(onChangeMock).toHaveBeenCalledWith(options[2].value);
-		expect(dropdownSelectedLabel.textContent).toBe(options[2].label);
+		expect(dropdownSelectedLabel).toHaveTextContent(options[2].label);
 	});
 
 	it('closes the dropdown when clicking outside', () => {
-		const { container } = renderDropdown();
-		const dropdownButton = container.querySelector('.dropdown-button-label');
-		const dropdownMenu = container.querySelector('.dropdown-menu');
-		const outsideElement = document.createElement('div');
+		renderDropdown();
+
+		const dropdownButton = screen.getByTestId('dropdown-button-label');
+		const dropdownMenu = screen.getByTestId('dropdown-menu');
 
 		fireEvent.click(dropdownButton);
 		expect(dropdownMenu).toHaveClass('open');
 
+		const outsideElement = document.createElement('div');
 		document.body.appendChild(outsideElement);
 		fireEvent.click(outsideElement);
-		expect(dropdownMenu).not.toHaveClass('open');
 
+		expect(dropdownMenu).not.toHaveClass('open');
 		document.body.removeChild(outsideElement);
 	});
 });

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as ArrowLeftIcon } from '../../assets/icons/arrow-left.svg';
 import { ReactComponent as ArrowRightShortIcon } from '../../assets/icons/arrow-right-short.svg';
 
@@ -10,36 +10,37 @@ import Text from '../atoms/Text';
 
 const Sidebar = ({ sections }) => {
 	const [showSlidingSidebar, setShowSlidingSidebar] = useState(false);
+	const location = useLocation();
 
 	const toggleSidebar = () => {
 		setShowSlidingSidebar(!showSlidingSidebar);
 	};
 
 	return (
-		<aside className={`page-sidebar ${!showSlidingSidebar ? 'hide' : ''}`}>
+		<aside className={`page-sidebar ${!showSlidingSidebar ? 'hide' : ''}`} data-testid="sidebar">
 			<nav className="page-sidebar-nav">
 				<div className="page-sidebar-slider-button">
-					<Button className="action-button" aria-label={showSlidingSidebar ? 'Slide In' : 'Slide Out'} onClick={toggleSidebar}>
+					<Button className="action-button" aria-label={showSlidingSidebar ? 'Slide In' : 'Slide Out'} data-testid="sidebar-slider-button" onClick={toggleSidebar}>
 						<ArrowRightShortIcon width="12" height="12" />
 					</Button>
 				</div>
 				{sections.map((section, sectionIndex) => (
-					<div key={sectionIndex} className="page-sidebar-section">
+					<div key={sectionIndex} className="page-sidebar-section" data-testid="sidebar-section">
 						{section.backLink ? (
-							<Button href={section.backLink.href} className="page-sidebar-backlink">
+							<Button href={section.backLink.href} className="page-sidebar-backlink" data-testid="sidebar-backlink">
 								<ArrowLeftIcon width="16" height="16" />
 								<Text className="title">{section.backLink.text}</Text>
 							</Button>
 						) : (
 							<>
-								<div className="page-sidebar-title">
+								<div className="page-sidebar-title" data-testid="sidebar-title">
 									<section.titleIcon width="16" height="16" fill="#ddd" />
 									<span>{section.title}</span>
 								</div>
 								<ul>
 									{section.items.map((item, itemIndex) => (
 										<li key={itemIndex}>
-											<Link to={item.link} className={`page-sidebar-link ${item.selected ? 'selected' : ''}`}>
+											<Link to={item.link} className={`page-sidebar-link ${location.pathname === item.link ? 'selected' : ''}`} data-testid={`sidebar-link-${itemIndex}`}>
 												<item.icon width="16" height="16" />
 												<Text className="title">{item.title}</Text>
 												{item.count && <span className="count">{item.count}</span>}

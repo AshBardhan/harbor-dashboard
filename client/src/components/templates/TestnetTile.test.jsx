@@ -3,23 +3,14 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import TestnetTile from './TestnetTile';
 import { Status } from '../../constants/status';
+import { SampleTestnetData } from '../../constants/dummy-data';
 
 describe('TestnetTile Template Component', () => {
-	const mockData = {
-		id: '1',
-		name: 'Testnet 1',
-		status: Status.RUNNING,
-		updated_at: '2023-10-01T12:00:00Z',
-		testnet_off_chain_actors: [{ status: Status.UPDATING }, { status: Status.STOPPED }],
-		testnet_chains: [
-			{ chain: 'Ethereum', status: Status.UPDATING },
-			{ chain: 'Bitcoin', status: Status.UPDATING },
-		],
-	};
+	const mockData = SampleTestnetData;
 
 	it('renders the TestnetTile component with correct name', () => {
 		render(<TestnetTile data={mockData} />);
-		const nameElement = screen.getByText(/Testnet 1/i);
+		const nameElement = screen.getByText(/testing clone/i);
 		expect(nameElement).toBeInTheDocument();
 	});
 

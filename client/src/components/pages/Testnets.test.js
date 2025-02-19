@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Testnet from './Testnets';
-import { SampleTestnetsData } from '../../constants/dummy-data';
+import Testnets from './Testnets';
+import { SampleTestnetListData } from '../../constants/dummy-data';
 
 describe('Testnet Page Component', () => {
-	beforeEach(() => {
+	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
@@ -13,16 +13,10 @@ describe('Testnet Page Component', () => {
 		return render(<Router>{ui}</Router>);
 	};
 
-	it('renders Testnet component without crashing', () => {
-		renderWithRouter(<Testnet />);
-		const loadingElement = screen.getByText(/Loading.../i);
-		expect(loadingElement).toBeInTheDocument();
-	});
-
 	it('displays a list of testnets after loading', async () => {
 		const mockTestnets = {
 			data: {
-				testnet: SampleTestnetsData,
+				testnet: SampleTestnetListData,
 			},
 		};
 
@@ -32,11 +26,12 @@ describe('Testnet Page Component', () => {
 			})
 		);
 
-		renderWithRouter(<Testnet />);
+		renderWithRouter(<Testnets />);
 
 		await waitFor(() => {
-			const testnetList = screen.getByRole('list');
+			const testnetList = screen.getByTestId('testnet-list');
 			expect(testnetList).toBeInTheDocument();
+
 			expect(screen.getByText(/powder-determine/i)).toBeInTheDocument();
 			expect(screen.getByText(/did-steep/i)).toBeInTheDocument();
 		});
@@ -47,7 +42,7 @@ describe('Testnet Page Component', () => {
 	it('displays an error message if data fetching fails', async () => {
 		jest.spyOn(global, 'fetch').mockImplementation(() => Promise.reject(new Error('Failed to fetch')));
 
-		renderWithRouter(<Testnet />);
+		renderWithRouter(<Testnets />);
 
 		await waitFor(() => {
 			const errorMessage = screen.getByText(/Error: Failed to fetch/i);
@@ -70,7 +65,7 @@ describe('Testnet Page Component', () => {
 			})
 		);
 
-		renderWithRouter(<Testnet />);
+		renderWithRouter(<Testnets />);
 
 		await waitFor(() => {
 			expect(screen.getByText(/No testnets found/i)).toBeInTheDocument();

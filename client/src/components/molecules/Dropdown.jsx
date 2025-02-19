@@ -44,16 +44,30 @@ const Dropdown = ({ options, selected, label, onChange }) => {
 	return (
 		<div className="dropdown" ref={dropdownRef}>
 			<div className="dropdown-button" onClick={onDropdownButtonClick}>
-				{label && <span className="dropdown-button-label">{label}</span>}
+				{label && (
+					<span className="dropdown-button-label" data-testid="dropdown-button-label">
+						{label}
+					</span>
+				)}
 				<Flexbox alignItems="center" justifyContent="center" gap="5px" style={{ color: selectedOption.color || '' }}>
 					{selectedOption.icon && getDropdownIcon(selectedOption)}
-					<span className="dropdown-button-selected-label">{selectedOption.label}</span>
+					<span className="dropdown-button-selected-label" data-testid="dropdown-button-selected-label">
+						{selectedOption.label}
+					</span>
 				</Flexbox>
 				<ArrowDownShortIcon className="icon" width="10" height="10" />
 			</div>
-			<div className={`dropdown-menu ${isOpen ? 'open' : ''}`}>
-				{options.map((option) => (
-					<div className={`dropdown-menu-option ${option.value === selectedOption.value && 'selected'}`} key={option.value} onClick={() => onDropdownOptionClick(option)}>
+			<div className={`dropdown-menu ${isOpen ? 'open' : ''}`} data-testid="dropdown-menu">
+				{options.map((option, index) => (
+					<div
+						className={`dropdown-menu-option ${option.value === selectedOption.value && 'selected'}`}
+						data-testid={`dropdown-option-${index}`}
+						role="button"
+						tabIndex={0}
+						onKeyDown={(e) => e.key === 'Enter' && onDropdownOptionClick(option)}
+						key={option.value}
+						onClick={() => onDropdownOptionClick(option)}
+					>
 						<Flexbox alignItems="center" justifyContent="center" gap="5px" style={{ color: option.color || '' }}>
 							{option.icon && getDropdownIcon(option)}
 							{option.label}

@@ -4,7 +4,7 @@ import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from '.
 import { SortOptions, SortType } from '../../constants/sort';
 import TestnetContent from '../templates/TestnetContent';
 
-export default function Testnet() {
+const Testnets = () => {
 	const [items, setItems] = useState([]);
 	const [filteredItems, setFilteredItems] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -16,7 +16,6 @@ export default function Testnet() {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	// Fetch data only once
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/testnets`)
 			.then((response) => response.json())
@@ -123,4 +122,6 @@ export default function Testnet() {
 			)}
 		</>
 	);
-}
+};
+
+export default Testnets;

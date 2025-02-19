@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Tile.scss';
 
-const Tile = ({ theme, children, ...props }) => {
+const Tile = ({ theme = '', children, ...props }) => {
 	return (
 		<div className={`tile ${theme && `tile--${theme}`}`} {...props}>
 			{children}
@@ -11,7 +11,7 @@ const Tile = ({ theme, children, ...props }) => {
 };
 
 Tile.propTypes = {
-	theme: PropTypes.string,
+	theme: PropTypes.oneOf(['', 'error', 'fade']),
 	children: PropTypes.node.isRequired,
 };
 

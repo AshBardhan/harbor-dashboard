@@ -15,8 +15,8 @@ Button.propTypes = {
 	children: PropTypes.node.isRequired,
 	onClick: PropTypes.func,
 	disabled: PropTypes.bool,
-	theme: PropTypes.string,
-	size: PropTypes.string,
+	theme: PropTypes.oneOf(['', 'primary', 'secondary']),
+	size: PropTypes.oneOf(['', 'big', 'small']),
 	className: PropTypes.string,
 };
 

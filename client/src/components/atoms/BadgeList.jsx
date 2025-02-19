@@ -6,7 +6,7 @@ const BadgeList = ({ list }) => {
 	return (
 		<div className="badges">
 			{list.map((item, index) => (
-				<div key={index} className="badge">
+				<div key={index} className="badge" data-testid={`badge-${index}`}>
 					<img src={item} width={16} height={16} alt={`Badge ${index}`} />
 				</div>
 			))}

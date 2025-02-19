@@ -391,6 +391,16 @@ module.exports = {
 			testnet_chains: [
 				{
 					chain: 'ethereum',
+					status: 'STOPPED',
+					__typename: 'testnet_chain',
+				},
+				{
+					chain: 'optimism',
+					status: 'RUNNING',
+					__typename: 'testnet_chain',
+				},
+				{
+					chain: 'arbitrum',
 					status: 'RUNNING',
 					__typename: 'testnet_chain',
 				},

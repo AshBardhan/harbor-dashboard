@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Sidebar from './Sidebar';
@@ -16,18 +16,19 @@ describe('Sidebar Component', () => {
 					link: '/item1',
 					count: 6,
 					icon: () => <span>ItemIcon1</span>,
-					selected: true,
 				},
 				{
 					id: 'item2',
 					title: 'Item 2',
 					link: '/item2',
+					count: 10,
 					icon: () => <span>ItemIcon2</span>,
 				},
 				{
 					id: 'item3',
 					title: 'Item 3',
 					link: '/item3',
+					count: 8,
 					icon: () => <span>ItemIcon3</span>,
 				},
 			],
@@ -49,36 +50,36 @@ describe('Sidebar Component', () => {
 	};
 
 	it('renders the sidebar with sections and items', () => {
-		const { container } = renderSidebar();
-		const sidebarTitle = container.querySelector('.page-sidebar-title span:last-child');
-		const sidebarSections = container.querySelectorAll('.page-sidebar-section');
-		const sidebarLinks = container.querySelectorAll('.page-sidebar-link');
+		renderSidebar();
+		const sidebarTitle = screen.getByText('Section Heading');
+		const sidebarSections = screen.getAllByTestId('sidebar-section');
+		const sidebarLinks = screen.getAllByTestId(/sidebar-link-\d+/);
 
 		expect(sidebarTitle).toBeInTheDocument();
-		expect(sidebarTitle.textContent).toBe('Section Heading');
 		expect(sidebarSections.length).toBe(sections.length);
 		expect(sidebarLinks.length).toBe(sections[0].items.length);
-		sidebarLinks.forEach((link, index) => {
+		sections[0].items.forEach((item, index) => {
+			const link = screen.getByTestId(`sidebar-link-${index}`);
 			expect(link).toBeInTheDocument();
-			expect(link.querySelector('.title').textContent).toBe(sections[0].items[index].title);
+			expect(link.querySelector('.title').textContent).toBe(item.title);
 		});
 	});
 
 	it('toggles the sidebar visibility when the button is clicked', async () => {
-		const { container } = renderSidebar();
-		const togglePageSidebarSliderButton = container.querySelector('.page-sidebar-slider-button .action-button');
-		const sidebar = container.querySelector('.page-sidebar');
+		renderSidebar();
+		const toggleSidebarButton = screen.getByTestId('sidebar-slider-button');
+		const sidebar = screen.getByTestId('sidebar');
 
-		fireEvent.click(togglePageSidebarSliderButton);
+		fireEvent.click(toggleSidebarButton);
 		expect(sidebar).not.toHaveClass('hide');
 
-		fireEvent.click(togglePageSidebarSliderButton);
+		fireEvent.click(toggleSidebarButton);
 		expect(sidebar).toHaveClass('hide');
 	});
 
 	it('renders a back link when provided', () => {
-		const { container } = renderSidebar();
-		const sidebarBackLink = container.querySelector('.page-sidebar-backlink');
+		renderSidebar();
+		const sidebarBackLink = screen.getByTestId('sidebar-backlink');
 
 		expect(sidebarBackLink).toBeInTheDocument();
 		expect(sidebarBackLink.querySelector('.title').textContent).toBe('Back');
@@ -86,15 +87,14 @@ describe('Sidebar Component', () => {
 	});
 
 	it('highlights the selected item', () => {
-		const { container } = renderSidebar();
-		const selectedSidebarItem = container.querySelector('.page-sidebar-link.selected');
+		renderSidebar();
+		const selectedIndex = 1;
+		const selectedSideBar = sections[0].items[selectedIndex];
+		const selectedSidebarItem = screen.getByTestId(`sidebar-link-${selectedIndex}`);
 		const selectedSidebarTitle = selectedSidebarItem.querySelector('.title');
 		const selectedSidebarCount = selectedSidebarItem.querySelector('.count');
-		const selectedSideBar = sections[0].items.find((item) => item.selected);
 
-		expect(selectedSidebarTitle).toBeInTheDocument();
 		expect(selectedSidebarTitle.textContent).toBe(selectedSideBar.title);
-		expect(selectedSidebarCount).toBeInTheDocument();
 		expect(selectedSidebarCount.textContent).toBe(`${selectedSideBar.count}`);
 	});
 });

@@ -31,7 +31,7 @@ const TestnetContent = ({ items, filterOptions, sortOptions, sortBy, filterBy, o
 				)}
 			</Flexbox>
 			{items && items.length ? (
-				<div role="list">
+				<div data-testid="testnet-list">
 					{items.map((item) => (
 						<TestnetTile key={item.id} data={item} />
 					))}

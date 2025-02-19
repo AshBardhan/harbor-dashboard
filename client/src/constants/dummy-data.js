@@ -1,4 +1,4 @@
-export const SampleTestnetsData = [
+export const SampleTestnetListData = [
 	{
 		name: 'powder-determine',
 		id: '23445f43-f4fe-475f-8ac7-1d23752fa075',
@@ -76,3 +76,42 @@ export const SampleTestnetsData = [
 		__typename: 'testnet',
 	},
 ];
+
+export const SampleTestnetData = {
+	name: 'testing clone',
+	id: '23555f67-a4de-453f-8eb7-1d23992cd075',
+	status: 'RUNNING',
+	endpoint: '15.101.17.213',
+	created_at: '2023-10-27T09:13:51.5306+00:00',
+	updated_at: '2023-10-27T09:26:40.622644+00:00',
+	testnet_off_chain_actors: [
+		{
+			name: 'routerCache',
+			status: 'UPDATING',
+			__typename: 'testnet_off_chain_actor',
+		},
+		{
+			name: 'ipfs',
+			status: 'STOPPED',
+			__typename: 'testnet_off_chain_actor',
+		},
+	],
+	testnet_chains: [
+		{
+			chain: 'ethereum',
+			status: 'UPDATING',
+			__typename: 'testnet_chain',
+		},
+		{
+			chain: 'bitcoin',
+			status: 'UPDATING',
+			__typename: 'testnet_chain',
+		},
+	],
+	testnet_image: {
+		project_id: '763ee978-0e32-466d-d345-00a835ed2499',
+		id: 'ed297e85-9b11-1d47-7a4e-946ba49d96c1',
+		__typename: 'testnet_image',
+	},
+	__typename: 'testnet',
+};

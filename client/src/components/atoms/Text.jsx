@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Text = ({ type = 'span', fontWeight, children, className, style = {}, ...props }) => {
+const Text = ({ type = 'span', fontWeight, children, className = '', style = {}, ...props }) => {
 	const Element = type;
 	const textStyles = {
 		fontWeight,

@@ -3,6 +3,8 @@ export const Blockchain = {
 	POLYGON: 'polygon',
 	FANTOM: 'fantom',
 	ALCHEMY: 'alchemy',
+	ARBITRUM: 'arbitrum',
+	OPTIMISM: 'optimism',
 };
 
 export const BlockchainIconMap = {
@@ -10,4 +12,6 @@ export const BlockchainIconMap = {
 	[Blockchain.POLYGON]: '/assets/images/polygon.png',
 	[Blockchain.FANTOM]: './assets/images/fantom.png',
 	[Blockchain.ALCHEMY]: '/assets/images/alchemy.png',
+	[Blockchain.ARBITRUM]: '/assets/images/arbitrum.png',
+	[Blockchain.OPTIMISM]: '/assets/images/optimism.png',
 };
