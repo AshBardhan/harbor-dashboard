@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactComponent as ArrowLeftIcon } from '../../assets/icons/arrow-left.svg';
 import { ReactComponent as ArrowRightShortIcon } from '../../assets/icons/arrow-right-short.svg';
 
@@ -8,9 +8,8 @@ import Button from '../atoms/Button';
 import './Sidebar.scss';
 import Text from '../atoms/Text';
 
-const Sidebar = ({ sections }) => {
+const Sidebar = ({ sections, onSiderbarLinkClick }) => {
 	const [showSlidingSidebar, setShowSlidingSidebar] = useState(false);
-	const location = useLocation();
 
 	const toggleSidebar = () => {
 		setShowSlidingSidebar(!showSlidingSidebar);
@@ -40,7 +39,12 @@ const Sidebar = ({ sections }) => {
 								<ul>
 									{section.items.map((item, itemIndex) => (
 										<li key={itemIndex}>
-											<Link to={item.link} className={`page-sidebar-link ${location.pathname === item.link ? 'selected' : ''}`} data-testid={`sidebar-link-${itemIndex}`}>
+											<Link
+												to={item.link}
+												className={`page-sidebar-link ${item.selected ? 'selected' : ''}`}
+												onClick={() => onSiderbarLinkClick(itemIndex, sectionIndex)}
+												data-testid={`sidebar-link-${itemIndex}`}
+											>
 												<item.icon width="16" height="16" />
 												<Text className="title">{item.title}</Text>
 												{item.count && <span className="count">{item.count}</span>}
