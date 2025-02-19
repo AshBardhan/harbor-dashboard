@@ -33,7 +33,7 @@ const Testnets = () => {
 
 				setFilterOptions([
 					{
-						label: `${StatusLabelMapping[Status.ALL]} (${testList.length})`,
+						label: `${StatusLabelMapping[Status.ALL]}`,
 						value: Status.ALL,
 						color: StatusColorMapping[Status.ALL],
 						icon: statusIconMap[Status.ALL],

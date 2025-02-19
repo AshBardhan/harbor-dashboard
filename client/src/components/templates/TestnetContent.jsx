@@ -10,7 +10,7 @@ import Button from '../atoms/Button';
 const TestnetContent = ({ items, filterOptions, sortOptions, sortBy, filterBy, onSortChange, onFilterChange }) => {
 	return (
 		<>
-			<Flexbox alignItems="center" justifyContent="space-between" gap="10px" breakpoint={1024} style={{ marginBottom: '20px' }}>
+			<Flexbox alignItems="center" justifyContent="space-between" gap="12px" breakpoint={1024} style={{ marginBottom: '20px' }}>
 				<Flexbox alignItems="center" gap="20px">
 					<Text type="h2">Testnets ({items.length || 0})</Text>
 					<Button type="button" theme="primary" size="big">
@@ -19,7 +19,7 @@ const TestnetContent = ({ items, filterOptions, sortOptions, sortBy, filterBy, o
 					</Button>
 				</Flexbox>
 				{items && items.length && (
-					<Flexbox alignItems="center" wrap="wrap" gap="10px">
+					<Flexbox alignItems="center" wrap="wrap" gap="12px">
 						{filterOptions.length > 0 && (
 							<>
 								<Dropdown label="Filter by:" options={filterOptions} selected={filterBy} onChange={onFilterChange} />

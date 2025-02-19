@@ -1,7 +1,9 @@
+@import '../../styles/variables';
+
 .tile {
 	background: white;
 	border-radius: 20px;
-	padding: 20px;
+	padding: 24px 32px;
 	border: 1px solid #e5e5e5;
 	box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 6%);
 	margin-bottom: 20px;
@@ -20,4 +22,10 @@
 	border-color: #ddd;
 	box-shadow: none;
 	background-color: transparent;
+}
+
+@media screen and (max-width: $page-breakpoint) {
+	.tile {
+		padding: 16px;
+	}
 }

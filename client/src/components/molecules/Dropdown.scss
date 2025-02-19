@@ -7,7 +7,7 @@
 .dropdown-button {
 	display: inline-flex;
 	align-items: center;
-	gap: 5px;
+	gap: 4px;
 	cursor: pointer;
 	font-weight: 600;
 	color: #555;
@@ -23,8 +23,8 @@
 	z-index: 1;
 	top: 100%;
 	right: 0;
-	padding: 10px 5px;
-	border-radius: 10px;
+	padding: 8px;
+	border-radius: 8px;
 	width: 200px;
 	background-color: #fff;
 	border: 1px solid #dddddd;
@@ -42,11 +42,11 @@
 }
 
 .dropdown-menu-option {
-	padding: 5px 10px;
-	border-radius: 10px;
+	padding: 6px 8px;
+	border-radius: 8px;
 	cursor: pointer;
 	font-weight: 600;
-	margin-bottom: 5px;
+	margin-bottom: 4px;
 
 	&:hover,
 	&.selected {

@@ -49,7 +49,7 @@ const Dropdown = ({ options, selected, label, onChange }) => {
 						{label}
 					</span>
 				)}
-				<Flexbox alignItems="center" justifyContent="center" gap="5px" style={{ color: selectedOption.color || '' }}>
+				<Flexbox alignItems="center" justifyContent="center" gap="6px" style={{ color: selectedOption.color || '' }}>
 					{selectedOption.icon && getDropdownIcon(selectedOption)}
 					<span className="dropdown-button-selected-label" data-testid="dropdown-button-selected-label">
 						{selectedOption.label}
@@ -68,7 +68,7 @@ const Dropdown = ({ options, selected, label, onChange }) => {
 						key={option.value}
 						onClick={() => onDropdownOptionClick(option)}
 					>
-						<Flexbox alignItems="center" justifyContent="center" gap="5px" style={{ color: option.color || '' }}>
+						<Flexbox alignItems="center" justifyContent="center" gap="6px" style={{ color: option.color || '' }}>
 							{option.icon && getDropdownIcon(option)}
 							{option.label}
 						</Flexbox>
