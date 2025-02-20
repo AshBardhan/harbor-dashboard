@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Flexbox from '../atoms/Flexbox';
 import { ReactComponent as ArrowDownShortIcon } from '../../assets/icons/arrow-down-short.svg';
@@ -13,16 +13,22 @@ const Dropdown = ({ options, selected, label, onChange }) => {
 	const dropdownRef = useRef(null);
 	const [isOpen, setIsOpen] = useState(false);
 
-	const onDropdownButtonClick = (e) => {
-		setIsOpen(!isOpen);
-		e.stopPropagation();
-	};
+	const onDropdownButtonClick = useCallback(
+		(e) => {
+			setIsOpen(!isOpen);
+			e.stopPropagation();
+		},
+		[isOpen]
+	);
 
-	const onDropdownOptionClick = (option) => {
-		setSelectedOption(option);
-		onChange(option.value);
-		setIsOpen(false);
-	};
+	const onDropdownOptionClick = useCallback(
+		(option) => {
+			setSelectedOption(option);
+			onChange(option.value);
+			setIsOpen(false);
+		},
+		[onChange]
+	);
 
 	const getDropdownIcon = (option) => {
 		const IconComponent = option?.icon || null;

@@ -18,7 +18,7 @@ The application is crafted using React to build scalable and reusable components
   - **Pages**: Complete pages using a combination of all components to form the final UI, managing `states` and passing them down as `props` through the component hierarchy.
 - **BEM Methodology**: Modular and maintainable namespaced CSS classes, providing less specificity on an element.
 - **Media Queries**: Ensures responsive design.
-- **API Response Caching**: To minimize redundant requests and computations using `useMemo` hook.
+- **Optimised Performance**: To minimize redundant re-renders and computations using `useMemo` and `useCallback` hooks.
 - **Routing**: To facilitate navigation and future scalability.
 - **Semantic HTML**: Promotes SEO and accessibility.
 - **Testing**: Integrated unit testing with `Jest` and `React Testing Library` covering all developed components.
@@ -68,9 +68,11 @@ As per the given requirements:
 The application was tested using the following tools:
 
 ### GTmetrix
+[Report Link](https://gtmetrix.com/reports/harbor-dashboard.vercel.app/0Nt7k0So/)
 ![GTmetrix](./reports/GTmetrix.png)
 
 ### PageSpeed Insights
+[Report Link](https://pagespeed.web.dev/analysis/https-harbor-dashboard-vercel-app/37t3s8t08w?form_factor=desktop)
 ![PageSpeed Insights Desktop](./reports/PageSpeedInsights-desktop.png)
 ![PageSpeed Insights Mobile](./reports/PageSpeedInsights-mobile.png)
 

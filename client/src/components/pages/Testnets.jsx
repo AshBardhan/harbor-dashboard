@@ -1,4 +1,4 @@
-import { useEffect, useState, useLayoutEffect, useMemo } from 'react';
+import { useEffect, useState, useLayoutEffect, useMemo, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from '../../constants/status';
 import { SortOptions, SortType } from '../../constants/sort';
@@ -99,8 +99,8 @@ const Testnets = () => {
 		];
 	}, [items]);
 
-	const onSortChange = (value) => setSortBy(value);
-	const onFilterChange = (value) => setFilterBy(value);
+	const onSortChange = useCallback((value) => setSortBy(value), []);
+	const onFilterChange = useCallback((value) => setFilterBy(value), []);
 
 	return (
 		<>
