@@ -5,7 +5,7 @@ import './Loading.scss';
 const Loading = ({ message = 'Loading...', size = '' }) => {
 	return (
 		<div className={`loading ${size && `loading--${size}`}`}>
-			<span className={`loading-icon ${size && `loading-icon--${size}`}`}></span>
+			<span className={`loading-icon ${size && `loading-icon--${size}`}`} data-testid="loading-icon"></span>
 			<span className={`loading-message ${size && `loading-message--${size}`}`}>{message}</span>
 		</div>
 	);

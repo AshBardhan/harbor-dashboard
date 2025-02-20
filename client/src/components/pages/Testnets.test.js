@@ -45,7 +45,7 @@ describe('Testnet Page Component', () => {
 		renderWithRouter(<Testnets />);
 
 		await waitFor(() => {
-			const errorMessage = screen.getByText(/Error: Failed to fetch/i);
+			const errorMessage = screen.getByText(/Unable to fetch Testnets./i);
 			expect(errorMessage).toBeInTheDocument();
 		});
 
