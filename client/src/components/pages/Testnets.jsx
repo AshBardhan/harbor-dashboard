@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from '../../constants/status';
 import { SortOptions, SortType } from '../../constants/sort';
 import TestnetContent from '../templates/TestnetContent';
+import Loading from '../atoms/Loading';
+import Error from '../atoms/Error';
 
 const Testnets = () => {
 	const [items, setItems] = useState([]);
@@ -105,9 +107,12 @@ const Testnets = () => {
 	return (
 		<>
 			{loading ? (
-				<div>Loading...</div>
+				<Loading size="big" message="Loading Testnets..." />
 			) : error ? (
-				<div>Error: {error.message}</div>
+				<Error size="big">
+					<div>Unable to fetch Testnets.</div>
+					<div>Try again later</div>
+				</Error>
 			) : (
 				<TestnetContent items={filteredItems} onSortChange={onSortChange} onFilterChange={onFilterChange} sortOptions={SortOptions} filterOptions={filterOptions} sortBy={sortBy} filterBy={filterBy} />
 			)}

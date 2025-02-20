@@ -1,0 +1,44 @@
+@keyframes loader-rotate {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: 100%;
+}
+
+.loading--big {
+	gap: 16px;
+}
+
+.loading-icon {
+	display: inline-flex;
+	width: 14px;
+	height: 14px;
+	color: inherit;
+	border: 2px solid;
+	border-bottom-color: transparent;
+	border-radius: 50%;
+	background: transparent;
+	animation: 600ms loader-rotate linear infinite;
+}
+
+.loading-icon--big {
+	width: 32px;
+	height: 32px;
+	border-width: 3px;
+}
+
+.loading-message {
+	font-size: 12px;
+	color: inherit;
+}
+
+.loading-message--big {
+	font-size: 24px;
+}
