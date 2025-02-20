@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/molecules/Sidebar';
+import Sidebar from '../components/organisms/Sidebar';
 import { ReactComponent as AddIcon } from '../assets/icons/add.svg';
 import { ReactComponent as CopyIcon } from '../assets/icons/copy.svg';
 import { ReactComponent as StarIcon } from '../assets/icons/star.svg';

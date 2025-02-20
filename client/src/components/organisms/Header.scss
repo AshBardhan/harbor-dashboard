@@ -14,7 +14,7 @@
 .page-header-nav {
 	flex-grow: 1;
 	display: flex;
-	gap: 20px;
+	gap: 12px;
 }
 
 .page-header-nav-item {
@@ -37,8 +37,7 @@
 }
 
 @media screen and (max-width: $page-breakpoint) {
-	.page-header,
-	.page-header-nav {
+	.page-header {
 		gap: 20px;
 	}
 

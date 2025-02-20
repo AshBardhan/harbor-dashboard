@@ -7,7 +7,7 @@ import { Status, StatusColorMapping, statusIconMap, StatusLabelMapping } from '.
 import { ReactComponent as ClockIcon } from '../../assets/icons/clock.svg';
 import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg';
 import { ReactComponent as HourglassIcon } from '../../assets/icons/hourglass.svg';
-import BadgeList from '../atoms/BadgeList';
+import BadgeList from '../molecules/BadgeList';
 import { BlockchainIconMap } from '../../constants/blockchain';
 import Tile from '../atoms/Tile';
 import Button from '../atoms/Button';
