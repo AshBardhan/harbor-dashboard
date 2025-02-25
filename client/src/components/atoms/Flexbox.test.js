@@ -35,7 +35,13 @@ describe('Flexbox Component', () => {
 	});
 
 	it('applies custom flex styles', () => {
-		renderFlexbox({ direction: 'column', justifyContent: 'center', alignItems: 'center', gap: '10px', wrap: 'wrap' });
+		renderFlexbox({
+			direction: 'column',
+			justifyContent: 'center',
+			alignItems: 'center',
+			gap: '10px',
+			wrap: 'wrap',
+		});
 		const flexboxElement = screen.getByText('Child 1').parentElement;
 		expect(flexboxElement).toHaveStyle({
 			flexDirection: 'column',
@@ -65,7 +71,10 @@ describe('Flexbox Component', () => {
 	});
 
 	it('applies additional className and style', () => {
-		renderFlexbox({ className: 'custom-class', style: { backgroundColor: 'red' } });
+		renderFlexbox({
+			className: 'custom-class',
+			style: { backgroundColor: 'red' },
+		});
 		const flexboxElement = screen.getByText('Child 1').parentElement;
 		expect(flexboxElement).toHaveClass('custom-class');
 		expect(flexboxElement).toHaveStyle({

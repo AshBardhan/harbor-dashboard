@@ -4,7 +4,11 @@ import '@testing-library/jest-dom';
 import BadgeList from './BadgeList';
 
 describe('BadgeList Component', () => {
-	const mockList = ['https://example.com/badge1.png', 'https://example.com/badge2.png', 'https://example.com/badge3.png'];
+	const mockList = [
+		'https://example.com/badge1.png',
+		'https://example.com/badge2.png',
+		'https://example.com/badge3.png',
+	];
 
 	const renderBadgeList = (list = mockList) => {
 		return render(<BadgeList list={list} />);

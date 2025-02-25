@@ -5,7 +5,12 @@ import './Button.scss';
 const Button = ({ children, onClick, disabled, theme = '', size = '', className = '', ...props }) => {
 	const Element = props.href ? 'a' : 'button';
 	return (
-		<Element className={`button ${theme && `button--${theme}`} ${size && `button--${size}`} ${className}`} onClick={onClick} disabled={disabled} {...props}>
+		<Element
+			className={`button ${theme && `button--${theme}`} ${size && `button--${size}`} ${className}`}
+			onClick={onClick}
+			disabled={disabled}
+			{...props}
+		>
 			{children}
 		</Element>
 	);

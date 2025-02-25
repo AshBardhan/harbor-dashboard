@@ -19,7 +19,12 @@ const Sidebar = ({ sections, onSiderbarLinkClick }) => {
 		<aside className={`page-sidebar ${!showSlidingSidebar ? 'hide' : ''}`} data-testid="sidebar">
 			<nav className="page-sidebar-nav">
 				<div className="page-sidebar-slider-button">
-					<Button className="action-button" aria-label={showSlidingSidebar ? 'Slide In' : 'Slide Out'} data-testid="sidebar-slider-button" onClick={toggleSidebar}>
+					<Button
+						className="action-button"
+						aria-label={showSlidingSidebar ? 'Slide In' : 'Slide Out'}
+						data-testid="sidebar-slider-button"
+						onClick={toggleSidebar}
+					>
 						<ArrowRightShortIcon width="12" height="12" />
 					</Button>
 				</div>

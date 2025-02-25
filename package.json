@@ -11,7 +11,7 @@
     ]
   },
   "scripts": {
-    "start:server": "node index.js"
+    "prepare": "husky"
   },
   "devDependencies": {
     "husky": "^9.1.7",

@@ -18,7 +18,7 @@ app.use(
 
 app.get('/api/testnets', (req, res) => {
 	res.json({
-		code: 200,
+		code: 201,
 		data: data,
 	});
 });

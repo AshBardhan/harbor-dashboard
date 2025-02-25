@@ -9,7 +9,12 @@ import { ReactComponent as ProjectsIcon } from '../../assets/icons/projects.svg'
 describe('Header Component', () => {
 	const mockNavItems = [
 		{ href: '/docs', label: 'Docs', icon: DocsIcon },
-		{ href: '/projects', label: 'Projects', icon: ProjectsIcon, align: 'right' },
+		{
+			href: '/projects',
+			label: 'Projects',
+			icon: ProjectsIcon,
+			align: 'right',
+		},
 	];
 
 	const renderHeader = () => {

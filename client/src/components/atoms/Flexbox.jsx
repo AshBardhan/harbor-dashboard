@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Flexbox = ({ direction = 'row', justifyContent = 'flex-start', alignItems = 'stretch', gap = '0', wrap = 'nowrap', breakpoint = null, children, className = '', style = {}, ...props }) => {
+const Flexbox = ({
+	direction = 'row',
+	justifyContent = 'flex-start',
+	alignItems = 'stretch',
+	gap = '0',
+	wrap = 'nowrap',
+	breakpoint = null,
+	children,
+	className = '',
+	style = {},
+	...props
+}) => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 	useEffect(() => {
@@ -47,7 +58,14 @@ const Flexbox = ({ direction = 'row', justifyContent = 'flex-start', alignItems 
 
 Flexbox.propTypes = {
 	direction: PropTypes.oneOf(['row', 'column']),
-	justifyContent: PropTypes.oneOf(['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly']),
+	justifyContent: PropTypes.oneOf([
+		'flex-start',
+		'flex-end',
+		'center',
+		'space-between',
+		'space-around',
+		'space-evenly',
+	]),
 	alignItems: PropTypes.oneOf(['stretch', 'flex-start', 'flex-end', 'center', 'baseline']),
 	gap: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	wrap: PropTypes.oneOf(['nowrap', 'wrap']),

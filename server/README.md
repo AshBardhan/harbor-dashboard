@@ -1,4 +1,3 @@
-
 # Harbor Server Backend Application
 
 ## Overview
@@ -21,11 +20,11 @@ The Harbor Server is a Node.js backend application that provides APIs for managi
 ### Installation
 
 1. Install dependencies:
-	```bash
-	npm install
-	```
+   ```bash
+   npm install
+   ```
 2. Start the server:
-	```bash
-	npm run dev
-	```
-	The server will run on http://localhost:3000 by default.
+   ```bash
+   npm run dev
+   ```
+   The server will run on http://localhost:3000 by default.

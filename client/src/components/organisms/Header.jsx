@@ -11,7 +11,11 @@ const Header = ({ logoSrc, navItems }) => {
 			<img width={97} src={logoSrc} alt="Logo" />
 			<nav className="page-header-nav">
 				{navItems.map((item, index) => (
-					<Link to={item.href} key={index} className={`page-header-nav-item ${item.align ? `page-header-nav-item--${item.align}` : ''}`}>
+					<Link
+						to={item.href}
+						key={index}
+						className={`page-header-nav-item ${item.align ? `page-header-nav-item--${item.align}` : ''}`}
+					>
 						<item.icon width="14" height="14" />
 						<span className="page-header-nav-item-label">{item.label}</span>
 					</Link>

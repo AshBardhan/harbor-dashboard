@@ -114,7 +114,15 @@ const Testnets = () => {
 					<div>Try again later</div>
 				</Error>
 			) : (
-				<TestnetContent items={filteredItems} onSortChange={onSortChange} onFilterChange={onFilterChange} sortOptions={SortOptions} filterOptions={filterOptions} sortBy={sortBy} filterBy={filterBy} />
+				<TestnetContent
+					items={filteredItems}
+					onSortChange={onSortChange}
+					onFilterChange={onFilterChange}
+					sortOptions={SortOptions}
+					filterOptions={filterOptions}
+					sortBy={sortBy}
+					filterBy={filterBy}
+				/>
 			)}
 		</>
 	);

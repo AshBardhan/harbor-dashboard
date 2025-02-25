@@ -19,7 +19,15 @@ describe('TestnetContent Component', () => {
 
 	const renderComponent = (items = mockItems) => {
 		return render(
-			<TestnetContent items={items} filterOptions={mockFilterOptions} sortOptions={mockSortOptions} sortBy="name" filterBy="all" onSortChange={mockOnSortChange} onFilterChange={mockOnFilterChange} />
+			<TestnetContent
+				items={items}
+				filterOptions={mockFilterOptions}
+				sortOptions={mockSortOptions}
+				sortBy="name"
+				filterBy="all"
+				onSortChange={mockOnSortChange}
+				onFilterChange={mockOnFilterChange}
+			/>
 		);
 	};
 

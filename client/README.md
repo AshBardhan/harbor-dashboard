@@ -21,15 +21,16 @@ The Harbor Dashboard Client is a React-based frontend application designed to ma
 ### Installation
 
 1. Install dependencies:
-	```bash
-	npm install
-	```
+   ```bash
+   npm install
+   ```
 2. Start the server:
-	```bash
-	npm run start
-	```
-	This will automatically open your browser and navigate to http://localhost:3001 to view the application.
+   ```bash
+   npm run start
+   ```
+   This will automatically open your browser and navigate to http://localhost:3001 to view the application.
 
 #### Other Scripts
+
 - `npm run build`: Builds the app for production.
 - `npm run test`: Runs the test suite.
