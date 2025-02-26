@@ -97,6 +97,10 @@ To launch the frontend React client application (in a separate terminal):
 - Enabled `CORS` on the `server` API endpoints for `client` application requests.
 - Altered the testnets JSON data to showcase the final result with various statuses and their specific conditions.
 
+## Client Testing
+Run `npm run test -- --coverage --watchAll` at `client` directory to generate code coverage report.
+![Test Coverage](./reports/client-test-coverage.png)
+
 ## Future Enhancements
 Apart from alternative architectures mentioned earlier, there are some potential improvements that can be considered for further development:
 - Implement filter by `search` input.
