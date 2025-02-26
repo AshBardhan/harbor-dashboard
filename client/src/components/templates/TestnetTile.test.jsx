@@ -45,4 +45,14 @@ describe('TestnetTile Template Component', () => {
 		const blockchainUpdatingMessage = screen.getByText(/Blockchain updating/i);
 		expect(blockchainUpdatingMessage).toBeInTheDocument();
 	});
+
+	it.each([
+		[Status.FAILED, 'tile--error'],
+		[Status.KILLED, 'tile--fade'],
+	])('shows a variant of Tile component based on %s status', (status, expectedClass) => {
+		const testData = { ...mockData, status };
+		render(<TestnetTile data={testData} />);
+		const tile = document.querySelector('.tile');
+		expect(tile).toHaveClass(expectedClass);
+	});
 });

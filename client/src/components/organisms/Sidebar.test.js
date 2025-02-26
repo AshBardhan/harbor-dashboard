@@ -41,10 +41,12 @@ describe('Sidebar Component', () => {
 		},
 	];
 
+	const onSiderbarLinkClickMock = jest.fn();
+
 	const renderSidebar = () => {
 		return render(
 			<Router>
-				<Sidebar sections={sections} />
+				<Sidebar sections={sections} onSiderbarLinkClick={onSiderbarLinkClickMock} />
 			</Router>
 		);
 	};
@@ -96,5 +98,16 @@ describe('Sidebar Component', () => {
 
 		expect(selectedSidebarTitle.textContent).toBe(selectedSideBar.title);
 		expect(selectedSidebarCount.textContent).toBe(`${selectedSideBar.count}`);
+	});
+
+	it('calls onSiderbarLinkClick with correct indices when a sidebar link is clicked', () => {
+		renderSidebar();
+		const itemIndex = 1;
+		const sectionIndex = 0;
+		const sidebarLink = screen.getByTestId(`sidebar-link-${itemIndex}`);
+
+		fireEvent.click(sidebarLink);
+
+		expect(onSiderbarLinkClickMock).toHaveBeenCalledWith(itemIndex, sectionIndex);
 	});
 });
