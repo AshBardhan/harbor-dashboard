@@ -1,54 +1,113 @@
-# Harbor Take Home (Frontend)
+# Harbor Client Frontend Application
 
-Welcome to the Harbor frontend take home assignment. We hope this is a good opportunity for you to showcase your skills.
+App Demo: [Harbor Dashboard](https://harbor-dashboard.vercel.app/)
 
-# Prerequisites
+## Overview
 
-There is a simple express server in this repo that will serve some dummy data. To start the server, install the packages and run `yarn start:server`.
-You can then access the data via `GET localhost:3000/testnets`
+The application is crafted using React to build scalable and reusable components. The following techniques adhere to best practices and enhance performance and maintainability:
 
-# The Challenge
+- **Atomic Design Principles**: Components are categorized for reusability and scalability:
+  - **Atoms**: Fundamental building blocks like `Button`, `Text`, and `Flexbox`.
+  - **Molecules**: Combinations of atoms forming more complex components like `Dropdown` and `BadgeList`.
+  - **Organisms**: Assemblies of molecules and atoms forming distinct UI sections like `Headers` and `Sidebar`.
+  - **Templates**: Page-level layout components defining the structure of a page.
+  - **Pages**: Complete pages using a combination of all components to form the final UI, managing `states` and passing them down as `props` through the component hierarchy.
+- **BEM Methodology**: Modular and maintainable namespaced CSS classes, providing less specificity on an element.
+- **Media Queries**: Ensures responsive design.
+- **Optimised Performance**: To minimize redundant re-renders and computations using `useMemo` and `useCallback` hooks.
+- **Routing**: To facilitate navigation and future scalability.
+- **Semantic HTML**: Promotes SEO and accessibility.
+- **Testing**: Integrated unit testing with `Jest` and `React Testing Library` covering all developed components.
 
-We want you to implement the following frontend design (Refer to the Figma link mentioned below in the Resources section to see the full UI flow with clickpoints and design in detail):
+### Considerations
 
-### Dashboard
-> <img width="819" alt="Screen Shot 2022-10-27 at 5 16 36 PM" src="https://github.com/harbor-xyz/frontend-take-home/assets/4207591/1e21209a-5de4-4b5c-a2f0-d895e98e814d">
+- **Next.js**: Both `client` and `server` applications are managed (and even deployed) separately.
+- **Redux**: Omitted to maintain simplicity, as managing props and state are sufficient for this project.
+- **Context API**: Not utilized to prevent frequent re-renders and maintain component reusability.
+- **Tailwind CSS**: BEM methodology was preferred over a utility-first approach that might not align with the existing styling strategy.
+- **TypeScript**: Deprioritized due to limited scope and time constraints, using React-based `prop-types` instead.
+- **Alternative Architectures**: PWA and Micro Frontends are not implemented as they are deemed unnecessary for this project.
 
+Any combinations of the above-mentioned techniques can be explored once we scale our application with more pages and features.
 
-## Let's break the screens down into functional parts:
+## Features Implemented
 
-**1. The Card**
-> <img width="922" alt="Screen Shot 2022-10-27 at 5 19 14 PM" src="https://user-images.githubusercontent.com/3914624/198276468-08cf6e70-e254-4a89-bc1e-f4f448bed00d.png">
+As per the given requirements:
+- Responsive dashboard showcasing testnets with their respective statuses and details.
+- Testnet results are sortable (based on name, status, creation date, and modified date) and filterable (based on status).
+- URL parameters are updated during sort and filter changes, ensuring sorted and filtered results upon refreshing the browser.
+- The application gracefully handles loading, error, and zero state use cases.
 
-**2. Sorting**
-> <img width="364" alt="Screen Shot 2022-10-27 at 5 21 13 PM" src="https://user-images.githubusercontent.com/3914624/198276939-22896aef-1484-4260-bb7b-9b378934685e.png">
+### Screenshots
 
-**3. Filtering**
-> <img width="400" alt="Screen Shot 2022-10-27 at 5 21 33 PM" src="https://user-images.githubusercontent.com/3914624/198277023-fd60ed69-a8e2-4507-a989-581321f5128e.png">
+#### Default View
+![Default View](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/ui/laptop-view.png)
 
+#### Mobile View
+![Mobile View](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/ui/mobile-view.png)
+![Mobile View with Sliding Menu](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/ui/mobile-view-with-sliding-sidebar.png)
 
-# Resources
+#### Monitor View
+![Monitor View](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/ui/monitor-view.png)
 
-All of the designs/icons are present in this link https://www.figma.com/file/9WvSRuYKIIPmwH59kycln3/Harbor---Front-end-assignment?node-id=0%3A1
+#### Testnet with Filtering
+![Filtering Testnets](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/ui/testnets-with-filtering.png)
 
-Please use them in your work.
+#### Testnet with Sorting
+![Sorting Testnets](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/ui/testnets-with-sorting.png)
 
-# Expectations
+#### Testnet with Both Filtering and Sorting
+![Filtering and Sorting Testnets](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/ui/testnets-with-filtering-and-sorting.png)
 
-We care about:
+## Performance Audit
 
-1. Components - Using components from UI libraries is easy, building them yourself is hard. We want to see if you have got what it takes to build robust, reusable components which are flexible enough to accomodate all the use cases possible for your UI.
-2. Fidelity - How close to the design did you get?
-3. Code quality - How reusable is your code?
-4. Approach - Why did you pick your architecture? What were the other approaches you considered?
-5. Estimation - You set the deadline for this. Your only obligation is to meet your own deadline.
+The application was tested using the following tools:
 
-If you are unable to complete all the tasks - make a product decision and explain to us why it was justified.
+### GTmetrix
+[Report Link](https://gtmetrix.com/reports/harbor-dashboard.vercel.app/0Nt7k0So/)
+![GTmetrix](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/reports/GTmetrix.png)
 
+### PageSpeed Insights
+[Report Link](https://pagespeed.web.dev/analysis/https-harbor-dashboard-vercel-app/37t3s8t08w?form_factor=desktop)
+![PageSpeed Insights Desktop](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/reports/PageSpeedInsights-desktop.png)
+![PageSpeed Insights Mobile](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/reports/PageSpeedInsights-mobile.png)
 
-# Submission
+## Installation and Code Execution
 
-1. Let us know how long you think this will take.
-2. Create a new branch with your name
-3. Open a PR against master
-4. Send a message to Abhishek when you are done
+To start the backend API server (in a separate terminal):
+
+1. Navigate to the `server` directory.
+2. Install dependencies with `npm install`.
+3. Execute `npm run dev` to run the server at `http://localhost:3000/`. 
+4. Verify on the web browser at `http://localhost:3000/api/testnets` which will return mock testnets data.
+
+To launch the frontend React client application (in a separate terminal):
+
+1. Navigate to the `client` directory.
+2. Install dependencies with `npm install`.
+3. Create a new `.env` file and add `REACT_APP_API_URL=http://localhost:3000/api` as an environment varaible.
+3. Execute `npm run start` to run the applation at `http://localhost:3001/` automaitcaly opening the browser.
+4. Verify on the web browser to see the dashboard rendering the testnets as per given design.
+
+## Additional Notes
+- Enabled `CORS` on the `server` API endpoints for `client` application requests.
+- Altered the testnets JSON data to showcase the final result with various statuses and their specific conditions.
+
+## Client Testing
+Run `npm run test -- --coverage --watchAll` at `client` directory to generate code coverage report.
+![Test Coverage](https://raw.githubusercontent.com/AshBardhan/frontend-take-home/refs/heads/master/docs/reports/client-test-coverage.png)
+
+## Future Enhancements
+Apart from alternative architectures mentioned earlier, there are some potential improvements that can be considered for further development:
+- Implement filter by `search` input.
+- Implement `pagination` and `infinite scrolling` for handling large datasets.
+- Integrate `Storybook` for component documentation.
+- Add E2E tests using `Cypress` or `Playwright` for improved test coverage.
+- Ensure full compliance with accessibility standards.
+- Support CSS theming for both light and dark modes.
+- Optimize images and other assets for better performance.
+- Integrate `ESLint` and `Prettier` for ensuring consistent coding style across the team.
+- Intergrate `GitHub Actions` for seamless CI/CD pipeline.
+- Explore `GraphQL` for efficient data fetching when scaling up.
+
+Any further feedback is highly appreciated.
