@@ -1,9 +1,7 @@
 {
-	"name": "frontend-take-home",
+	"name": "harbor-dashboard--server",
 	"version": "1.0.0",
 	"main": "index.js",
-	"repository": "git@github.com:harbor-xyz/frontend-take-home.git",
-	"author": "Prakash Sanker <praks5432@gmail.com>",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
@@ -14,9 +12,9 @@
 		"@vercel/node": "^5.1.7",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
-		"express": "^4.18.2"
+		"express": "^5.1.0"
 	},
 	"devDependencies": {
-		"nodemon": "^2.0.7"
+		"nodemon": "^3.1.10"
 	}
 }
